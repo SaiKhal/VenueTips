@@ -13,6 +13,10 @@
 		C4AB31E3200E9B470044137B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */; };
 		C4AB31EE200E9B470044137B /* VenueTipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31ED200E9B470044137B /* VenueTipsTests.swift */; };
 		C4AB31F9200E9B470044137B /* VenueTipsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31F8200E9B470044137B /* VenueTipsUITests.swift */; };
+		C4AB3212200EA8090044137B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3211200EA8090044137B /* SearchView.swift */; };
+		C4AB3214200EA92A0044137B /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3213200EA92A0044137B /* SearchVC.swift */; };
+		C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3215200EA9A60044137B /* CollectionsView.swift */; };
+		C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3217200EAACE0044137B /* CollectionsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,10 @@
 		C4AB31F4200E9B470044137B /* VenueTipsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenueTipsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB31F8200E9B470044137B /* VenueTipsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueTipsUITests.swift; sourceTree = "<group>"; };
 		C4AB31FA200E9B470044137B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4AB3211200EA8090044137B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C4AB3213200EA92A0044137B /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
+		C4AB3215200EA9A60044137B /* CollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsView.swift; sourceTree = "<group>"; };
+		C4AB3217200EAACE0044137B /* CollectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CollectionsVC.swift; path = VenueTips/Controllers/CollectionsVC.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +137,8 @@
 		C4AB320D200EA2900044137B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C4AB3211200EA8090044137B /* SearchView.swift */,
+				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
 			);
 			name = Views;
 			path = "New Group2";
@@ -137,6 +147,8 @@
 		C4AB320E200EA2970044137B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C4AB3213200EA92A0044137B /* SearchVC.swift */,
+				C4AB3217200EAACE0044137B /* CollectionsVC.swift */,
 			);
 			name = Controllers;
 			path = "New Group3";
@@ -291,7 +303,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4AB3214200EA92A0044137B /* SearchVC.swift in Sources */,
+				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
+				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
+				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

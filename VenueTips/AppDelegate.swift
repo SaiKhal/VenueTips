@@ -16,6 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let tbc = UITabBarController()
+        
+        let searchVC = SearchVC()
+        searchVC.view.backgroundColor = .white
+        let collectionsVC = UIViewController()
+        collectionsVC.view.backgroundColor = .white
+        
+        let searchNav = UINavigationController(rootViewController: searchVC)
+        searchNav.tabBarItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
+        
+        let collectionNav = UINavigationController(rootViewController: collectionsVC)
+        collectionNav.tabBarItem = UITabBarItem(title: "Collections", image: nil, selectedImage: nil)
+        
+        tbc.viewControllers = [searchNav, collectionNav]
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = tbc
+        window?.makeKeyAndVisible()
         return true
     }
 
