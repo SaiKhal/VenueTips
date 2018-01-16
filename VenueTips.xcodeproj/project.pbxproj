@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		81673710200EB04A00D1BFE8 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8167370F200EB04A00D1BFE8 /* AppError.swift */; };
+		81673712200EB0B200D1BFE8 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81673711200EB0B200D1BFE8 /* NetworkHelper.swift */; };
 		C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31D8200E9B470044137B /* AppDelegate.swift */; };
 		C4AB31DB200E9B470044137B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31DA200E9B470044137B /* ViewController.swift */; };
 		C4AB31DE200E9B470044137B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DC200E9B470044137B /* Main.storyboard */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8167370F200EB04A00D1BFE8 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		81673711200EB0B200D1BFE8 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C4AB31D5200E9B470044137B /* VenueTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB31D8200E9B470044137B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4AB31DA200E9B470044137B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			children = (
 				C4AB31D8200E9B470044137B /* AppDelegate.swift */,
 				C4AB31DA200E9B470044137B /* ViewController.swift */,
+				8167370F200EB04A00D1BFE8 /* AppError.swift */,
+				81673711200EB0B200D1BFE8 /* NetworkHelper.swift */,
 				C4AB31DC200E9B470044137B /* Main.storyboard */,
 				C4AB31DF200E9B470044137B /* Assets.xcassets */,
 				C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */,
@@ -259,8 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81673712200EB0B200D1BFE8 /* NetworkHelper.swift in Sources */,
 				C4AB31DB200E9B470044137B /* ViewController.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
+				81673710200EB04A00D1BFE8 /* AppError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
