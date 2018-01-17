@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:VenueTips.xcodeproj">
+      location = "group:/Users/Masai/Code/C4Q/VenueTips/VenueTips/AppError.swift">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/Masai/Code/C4Q/VenueTips/VenueTips/NetworkHelper.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

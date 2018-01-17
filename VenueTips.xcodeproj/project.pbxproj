@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
+		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
 		C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31D8200E9B470044137B /* AppDelegate.swift */; };
 		C4AB31DE200E9B470044137B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DC200E9B470044137B /* Main.storyboard */; };
 		C4AB31E0200E9B470044137B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DF200E9B470044137B /* Assets.xcassets */; };
@@ -42,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		C42D5DA5200FCBDD007D76C5 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C4AB31D5200E9B470044137B /* VenueTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB31D8200E9B470044137B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4AB31DD200E9B470044137B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -90,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C42D5DA1200FCB76007D76C5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C42D5DA5200FCBDD007D76C5 /* AppError.swift */,
+				C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		C4AB31CC200E9B470044137B = {
 			isa = PBXGroup;
 			children = (
@@ -114,8 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AB31D8200E9B470044137B /* AppDelegate.swift */,
-				C4AB3210200EA2D20044137B /* Helpers */,
-				C4AB320F200EA29F0044137B /* Models */,
+				C42D5DA1200FCB76007D76C5 /* Network */,
 				C4AB320D200EA2900044137B /* Views */,
 				C4AB320E200EA2970044137B /* Controllers */,
 				C4AB31DC200E9B470044137B /* Main.storyboard */,
@@ -167,21 +179,6 @@
 			);
 			name = Controllers;
 			path = "New Group3";
-			sourceTree = "<group>";
-		};
-		C4AB320F200EA29F0044137B /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		C4AB3210200EA2D20044137B /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helpers;
-			path = "New Group4";
 			sourceTree = "<group>";
 		};
 		C4AB3219200EEFA10044137B /* SearchBars */ = {
@@ -330,9 +327,11 @@
 				C4AB3223200FB1390044137B /* ResultsView.swift in Sources */,
 				C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */,
 				C4AB3225200FB1CA0044137B /* ResultsVC.swift in Sources */,
+				C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
 				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
 				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
+				C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */,
 				C4AB3221200F00760044137B /* CreationView.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
 				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
