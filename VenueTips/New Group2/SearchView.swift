@@ -32,6 +32,17 @@ class SearchView: UIView {
         return sb
     }()
     
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        //        layout.sectionInset = UIEdgeInsets(top: 120, left: 20, bottom: 20, right: 20)
+        
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.isOpaque = false
+        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
+        return cv
+    }()
+    
     func setSearchBar() {
         self.addSubview(searchBar)
         searchBar.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +51,17 @@ class SearchView: UIView {
         searchBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
     }
     
+    func setCollectionView() {
+        self.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 30).isActive = true
+        collectionView.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
+    }
+    
     func setupViews() {
         setSearchBar()
+        setCollectionView()
     }
 }

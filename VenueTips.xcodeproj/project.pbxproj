@@ -20,6 +20,8 @@
 		C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB321C200EF1B40044137B /* MainCustomSearchBar.swift */; };
 		C4AB321F200EFF520044137B /* CreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB321E200EFF520044137B /* CreationVC.swift */; };
 		C4AB3221200F00760044137B /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3220200F00760044137B /* CreationView.swift */; };
+		C4AB3223200FB1390044137B /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3222200FB1390044137B /* ResultsView.swift */; };
+		C4AB3225200FB1CA0044137B /* ResultsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB3224200FB1CA0044137B /* ResultsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		C4AB321C200EF1B40044137B /* MainCustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCustomSearchBar.swift; sourceTree = "<group>"; };
 		C4AB321E200EFF520044137B /* CreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreationVC.swift; path = VenueTips/Controllers/CreationVC.swift; sourceTree = SOURCE_ROOT; };
 		C4AB3220200F00760044137B /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CreationView.swift; path = "VenueTips/New Group2/CreationView.swift"; sourceTree = SOURCE_ROOT; };
+		C4AB3222200FB1390044137B /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		C4AB3224200FB1CA0044137B /* ResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultsVC.swift; path = VenueTips/Controllers/ResultsVC.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 			children = (
 				C4AB3219200EEFA10044137B /* SearchBars */,
 				C4AB3211200EA8090044137B /* SearchView.swift */,
+				C4AB3222200FB1390044137B /* ResultsView.swift */,
 				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
 				C4AB3220200F00760044137B /* CreationView.swift */,
 			);
@@ -156,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AB3213200EA92A0044137B /* SearchVC.swift */,
+				C4AB3224200FB1CA0044137B /* ResultsVC.swift */,
 				C4AB321E200EFF520044137B /* CreationVC.swift */,
 				C4AB3217200EAACE0044137B /* CollectionsVC.swift */,
 			);
@@ -321,7 +327,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4AB3214200EA92A0044137B /* SearchVC.swift in Sources */,
+				C4AB3223200FB1390044137B /* ResultsView.swift in Sources */,
 				C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */,
+				C4AB3225200FB1CA0044137B /* ResultsVC.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
 				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
 				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
