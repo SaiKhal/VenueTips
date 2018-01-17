@@ -21,11 +21,26 @@ class SearchView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = .purple
+        backgroundColor = .red
         setupViews()
     }
     
+    lazy var searchBar: MainCustomSearchBar = {
+        let sb = MainCustomSearchBar()
+        sb.backgroundColor = .white
+        sb.searchBarStyle = .minimal
+        return sb
+    }()
+    
+    func setSearchBar() {
+        self.addSubview(searchBar)
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        searchBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+    }
+    
     func setupViews() {
-        
+        setSearchBar()
     }
 }

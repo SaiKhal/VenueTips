@@ -25,7 +25,7 @@ class CollectionsVC: UIViewController {
     }
     
     @objc func nextViewController() {
-//        present(SearchVC(), animated: true, completion: nil)
+        present(CreationVC(), animated: true, completion: nil)
     }
 
 }

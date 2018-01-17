@@ -14,7 +14,6 @@ class MainCustomSearchBar: UISearchBar {
         let sb = UISearchBar()
         sb.searchBarStyle = .prominent
         sb.isTranslucent = false
-        sb.backgroundColor = .white
         sb.tag = 0
         sb.placeholder = "Search for a venue"
         return sb
