@@ -26,18 +26,12 @@ class SearchVC: UIViewController {
     
     private func setNavBar() {
         //        Add search bar
-        let navSearchBar = UISearchBar()
-        navSearchBar.searchBarStyle = .prominent
-        navSearchBar.isTranslucent = false
-        navSearchBar.backgroundColor = .white
-        navSearchBar.tag = 0
-        navSearchBar.delegate = self
-        navSearchBar.placeholder = "Search for a venue"
-        navigationItem.titleView = navSearchBar
-        
+        let mainCustomSB = MainCustomSearchBar()
+        navigationItem.titleView = mainCustomSB
+        mainCustomSB.delegate = self
         
         //        Add right bar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Test", style: .plain, target: self, action: #selector(nextViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "??", style: .plain, target: self, action: #selector(nextViewController))
     }
     
     

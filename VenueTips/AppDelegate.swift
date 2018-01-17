@@ -19,9 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tbc = UITabBarController()
         
         let searchVC = SearchVC()
-        searchVC.view.backgroundColor = .white
-        let collectionsVC = UIViewController()
-        collectionsVC.view.backgroundColor = .white
+        let collectionsVC = CollectionsVC()
         
         let searchNav = UINavigationController(rootViewController: searchVC)
         searchNav.tabBarItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
