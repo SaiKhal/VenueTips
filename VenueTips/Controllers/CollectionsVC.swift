@@ -14,6 +14,13 @@ class CollectionsVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Test", style: .done, target: self, action: #selector(nextViewController))
+    }
+    
+    @objc func nextViewController() {
+        let newVC = SearchVC()
+        newVC.view.backgroundColor = .green
+        navigationController?.pushViewController(newVC, animated: true)
     }
 
 }
