@@ -21,7 +21,7 @@ class SearchView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = .red
+        backgroundColor = .purple
         setupViews()
     }
     
@@ -35,10 +35,9 @@ class SearchView: UIView {
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        //        layout.sectionInset = UIEdgeInsets(top: 120, left: 20, bottom: 20, right: 20)
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.isOpaque = false
+        cv.backgroundColor = .clear
         cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
         return cv
     }()

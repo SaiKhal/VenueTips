@@ -25,6 +25,9 @@ class SearchVC: UIViewController {
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
         searchView.searchBar.delegate = self
+        searchView.searchBar.backgroundColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.isTranslucent = true
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
         
@@ -64,9 +67,10 @@ extension SearchVC: UISearchBarDelegate {
 
 extension SearchVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 200)
+        return CGSize(width: 140, height: 140)
     }
 }
+
 
 extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

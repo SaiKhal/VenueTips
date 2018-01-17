@@ -59,16 +59,35 @@ class CreationView: UIView {
         return bttn
     }()
     
-    lazy var searchBar: MainCustomSearchBar = {
-        let sb = MainCustomSearchBar()
-        sb.backgroundColor = .white
-        sb.searchBarStyle = .minimal
-        return sb
+    lazy var titleField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .blue
+        tf.borderStyle = .roundedRect
+        tf.layer.cornerRadius = 10
+        return tf
+    }()
+    
+    lazy var tipField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .blue
+        tf.borderStyle = .roundedRect
+        tf.layer.cornerRadius = 10
+        return tf
+    }()
+    
+    lazy var largeField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .blue
+        tf.borderStyle = .roundedRect
+        tf.layer.cornerRadius = 10
+        return tf
     }()
     
     func setupViews() {
         setHeaderStackView()
-        setSearchBar()
+        setTitleField()
+        setTipField()
+        setLargeField()
     }
     
     func setHeaderStackView() {
@@ -82,12 +101,33 @@ class CreationView: UIView {
 
     }
     
-    func setSearchBar() {
-        self.addSubview(searchBar)
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: titleLabel.bottomAnchor).isActive = true
-        searchBar.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        searchBar.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+    func setTitleField() {
+        self.addSubview(titleField)
+        titleField.translatesAutoresizingMaskIntoConstraints = false
+        titleField.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 20).isActive = true
+        titleField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        titleField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        titleField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1).isActive = true
+    }
+    
+    func setTipField() {
+        self.addSubview(tipField)
+        tipField.translatesAutoresizingMaskIntoConstraints = false
+        tipField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 20).isActive = true
+        tipField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        tipField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        tipField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
+
+    }
+    
+    func setLargeField() {
+        self.addSubview(largeField)
+        largeField.translatesAutoresizingMaskIntoConstraints = false
+        largeField.topAnchor.constraint(equalTo: tipField.bottomAnchor, constant: 20).isActive = true
+        largeField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        largeField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        largeField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3).isActive = true
+
     }
     
     

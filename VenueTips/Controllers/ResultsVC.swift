@@ -47,6 +47,9 @@ extension ResultsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
+        cell.textLabel?.text = "Test"
         return cell
     }
 }
+
+
