@@ -9,8 +9,13 @@
 /* Begin PBXBuildFile section */
 		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
 		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
+		C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEE52011255F0019CFD3 /* VenueResults.swift */; };
+		C484AEE9201125920019CFD3 /* VenueSearchAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEE8201125920019CFD3 /* VenueSearchAPIClient.swift */; };
+		C484AEEB201127580019CFD3 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEEA201127580019CFD3 /* ImageDownloader.swift */; };
+		C484AEED20112C0C0019CFD3 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEEC20112C0C0019CFD3 /* VenueCell.swift */; };
+		C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEEF20112F6B0019CFD3 /* VenuePhotoAPIClient.swift */; };
+		C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */; };
 		C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31D8200E9B470044137B /* AppDelegate.swift */; };
-		C4AB31DE200E9B470044137B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DC200E9B470044137B /* Main.storyboard */; };
 		C4AB31E0200E9B470044137B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DF200E9B470044137B /* Assets.xcassets */; };
 		C4AB31E3200E9B470044137B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */; };
 		C4AB31EE200E9B470044137B /* VenueTipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31ED200E9B470044137B /* VenueTipsTests.swift */; };
@@ -46,9 +51,14 @@
 /* Begin PBXFileReference section */
 		C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C42D5DA5200FCBDD007D76C5 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		C484AEE52011255F0019CFD3 /* VenueResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueResults.swift; sourceTree = "<group>"; };
+		C484AEE8201125920019CFD3 /* VenueSearchAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueSearchAPIClient.swift; sourceTree = "<group>"; };
+		C484AEEA201127580019CFD3 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		C484AEEC20112C0C0019CFD3 /* VenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
+		C484AEEF20112F6B0019CFD3 /* VenuePhotoAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotoAPIClient.swift; sourceTree = "<group>"; };
+		C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotos.swift; sourceTree = "<group>"; };
 		C4AB31D5200E9B470044137B /* VenueTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB31D8200E9B470044137B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4AB31DD200E9B470044137B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4AB31DF200E9B470044137B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4AB31E2200E9B470044137B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4AB31E4200E9B470044137B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,8 +109,28 @@
 			children = (
 				C42D5DA5200FCBDD007D76C5 /* AppError.swift */,
 				C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */,
+				C484AEEF20112F6B0019CFD3 /* VenuePhotoAPIClient.swift */,
+				C484AEE8201125920019CFD3 /* VenueSearchAPIClient.swift */,
+				C484AEEA201127580019CFD3 /* ImageDownloader.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		C484AEE7201125690019CFD3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C484AEE52011255F0019CFD3 /* VenueResults.swift */,
+				C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C484AEEE20112CB70019CFD3 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C484AEEC20112C0C0019CFD3 /* VenueCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		C4AB31CC200E9B470044137B = {
@@ -130,7 +160,7 @@
 				C42D5DA1200FCB76007D76C5 /* Network */,
 				C4AB320D200EA2900044137B /* Views */,
 				C4AB320E200EA2970044137B /* Controllers */,
-				C4AB31DC200E9B470044137B /* Main.storyboard */,
+				C484AEE7201125690019CFD3 /* Model */,
 				C4AB31DF200E9B470044137B /* Assets.xcassets */,
 				C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */,
 				C4AB31E4200E9B470044137B /* Info.plist */,
@@ -160,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				C4AB3219200EEFA10044137B /* SearchBars */,
+				C484AEEE20112CB70019CFD3 /* Cells */,
 				C4AB3211200EA8090044137B /* SearchView.swift */,
 				C4AB3222200FB1390044137B /* ResultsView.swift */,
 				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
@@ -298,7 +329,6 @@
 			files = (
 				C4AB31E3200E9B470044137B /* LaunchScreen.storyboard in Resources */,
 				C4AB31E0200E9B470044137B /* Assets.xcassets in Resources */,
-				C4AB31DE200E9B470044137B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,17 +354,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4AB3214200EA92A0044137B /* SearchVC.swift in Sources */,
+				C484AEEB201127580019CFD3 /* ImageDownloader.swift in Sources */,
+				C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */,
 				C4AB3223200FB1390044137B /* ResultsView.swift in Sources */,
 				C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */,
 				C4AB3225200FB1CA0044137B /* ResultsVC.swift in Sources */,
 				C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
+				C484AEE9201125920019CFD3 /* VenueSearchAPIClient.swift in Sources */,
 				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
 				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
 				C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */,
+				C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */,
 				C4AB3221200F00760044137B /* CreationView.swift in Sources */,
+				C484AEED20112C0C0019CFD3 /* VenueCell.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
 				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
+				C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,14 +406,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C4AB31DC200E9B470044137B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4AB31DD200E9B470044137B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
