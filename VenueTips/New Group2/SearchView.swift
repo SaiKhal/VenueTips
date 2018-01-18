@@ -38,7 +38,7 @@ class SearchView: UIView {
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.backgroundColor = .clear
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
+        cv.register(VenueCell.self, forCellWithReuseIdentifier: "SearchCell")
         return cv
     }()
     
