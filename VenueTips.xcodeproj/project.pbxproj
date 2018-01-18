@@ -16,7 +16,6 @@
 		C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEEF20112F6B0019CFD3 /* VenuePhotoAPIClient.swift */; };
 		C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */; };
 		C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31D8200E9B470044137B /* AppDelegate.swift */; };
-		C4AB31DE200E9B470044137B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DC200E9B470044137B /* Main.storyboard */; };
 		C4AB31E0200E9B470044137B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31DF200E9B470044137B /* Assets.xcassets */; };
 		C4AB31E3200E9B470044137B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */; };
 		C4AB31EE200E9B470044137B /* VenueTipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4AB31ED200E9B470044137B /* VenueTipsTests.swift */; };
@@ -60,7 +59,6 @@
 		C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenuePhotos.swift; sourceTree = "<group>"; };
 		C4AB31D5200E9B470044137B /* VenueTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenueTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4AB31D8200E9B470044137B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4AB31DD200E9B470044137B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4AB31DF200E9B470044137B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4AB31E2200E9B470044137B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4AB31E4200E9B470044137B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 				C4AB320D200EA2900044137B /* Views */,
 				C4AB320E200EA2970044137B /* Controllers */,
 				C484AEE7201125690019CFD3 /* Model */,
-				C4AB31DC200E9B470044137B /* Main.storyboard */,
 				C4AB31DF200E9B470044137B /* Assets.xcassets */,
 				C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */,
 				C4AB31E4200E9B470044137B /* Info.plist */,
@@ -332,7 +329,6 @@
 			files = (
 				C4AB31E3200E9B470044137B /* LaunchScreen.storyboard in Resources */,
 				C4AB31E0200E9B470044137B /* Assets.xcassets in Resources */,
-				C4AB31DE200E9B470044137B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,14 +406,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C4AB31DC200E9B470044137B /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4AB31DD200E9B470044137B /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4AB31E1200E9B470044137B /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
