@@ -24,7 +24,7 @@ class SearchVC: UIViewController {
         view.addSubview(searchView)
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
-        searchView.searchBar.delegate = self
+        searchView.venueSearchBar.delegate = self
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
         
@@ -74,7 +74,7 @@ extension SearchVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath)
         cell.backgroundColor = .white
         return cell
     }

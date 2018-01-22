@@ -7,8 +7,39 @@
 //
 
 import UIKit
-
+import MapKit
 class SearchView: UIView {
+    
+    lazy var venueSearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Search a Venue"
+        return searchBar
+    }()
+    
+    lazy var locationSearchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.placeholder = "Queens NY"
+        searchBar.barTintColor = .white
+        return searchBar
+    }()
+    
+    lazy var mapView: MKMapView = {
+        let map = MKMapView()
+        map.showsUserLocation = true
+        return map
+    }()
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.register(VenueCell.self, forCellWithReuseIdentifier: "VenueCell")
+        return cv
+    }()
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -21,47 +52,57 @@ class SearchView: UIView {
     }
     
     func commonInit() {
-        backgroundColor = .red
+        backgroundColor = .purple
         setupViews()
     }
     
-    lazy var searchBar: MainCustomSearchBar = {
-        let sb = MainCustomSearchBar()
-        sb.backgroundColor = .white
-        sb.searchBarStyle = .minimal
-        return sb
-    }()
-    
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        //        layout.sectionInset = UIEdgeInsets(top: 120, left: 20, bottom: 20, right: 20)
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.isOpaque = false
-        cv.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "SearchCell")
-        return cv
-    }()
-    
-    func setSearchBar() {
-        self.addSubview(searchBar)
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor).isActive = true
-        searchBar.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        searchBar.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-    }
-    
-    func setCollectionView() {
-        self.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: searchBar.bottomAnchor, constant: 30).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor).isActive = true
-    }
-    
     func setupViews() {
-        setSearchBar()
-        setCollectionView()
+        setupVenueSearchBar()
+        setupLocationSearchBar()
+        setupMapView()
+        setupCollectionView()
+        
+    }
+    
+    
+    func setupVenueSearchBar() {
+        
+    }
+    
+    func setupLocationSearchBar() {
+        addSubview(locationSearchBar)
+        self.locationSearchBar.snp.makeConstraints { (make) in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(safeAreaLayoutGuide.snp.trailing)
+            make.height.equalTo(40)
+            
+        }
+    }
+    
+    func setupMapView() {
+        addSubview(mapView)
+        self.mapView.snp.makeConstraints { (make) in
+            make.top.equalTo(locationSearchBar.snp.bottom)
+            make.leading.equalTo(snp.leading)
+            make.trailing.equalTo(snp.trailing)
+            make.bottom.equalTo(snp.bottom)
+            
+        }
+    }
+    
+    
+    
+    func setupCollectionView() {
+        self.addSubview(collectionView)
+        self.collectionView.snp.remakeConstraints { (make) -> Void in
+            make.leading.equalToSuperview()
+            make.trailing.equalToSuperview()
+            make.height.equalToSuperview().dividedBy(5)
+            make.bottom.equalTo(mapView.snp.bottom).offset(-50)
+            
+            
+        }
+        
     }
 }
