@@ -105,7 +105,7 @@ extension SearchVC: UICollectionViewDataSource {
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
             ImageDownloader.manager.getImage(from: endpoint,
-                                             completionHandler: {cell.venueImageView.image = UIImage(data: $0); cell.setNeedsLayout()},
+                                             completionHandler: {cell.venueImageView.image = $0; cell.setNeedsLayout()},
                                              errorHandler: {print($0)})
 
         }
