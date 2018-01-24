@@ -88,7 +88,7 @@ class CreationView: UIView {
         setHeaderStackView()
         setTitleField()
         setTipField()
-        setLargeField()
+//        setLargeField()
     }
     
     func setTitleLabel() {
