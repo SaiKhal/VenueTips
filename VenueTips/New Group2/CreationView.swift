@@ -96,6 +96,7 @@ class CreationView: UIView {
         self.titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.snp.centerX)
         }
+
     }
     
     func setHeaderStackView() {
@@ -130,19 +131,5 @@ class CreationView: UIView {
         }
         
     }
-    
-    func setLargeField() {
-        self.addSubview(largeField)
-        self.largeField.snp.makeConstraints { (make) in
-            make.top.equalTo(tipField.snp.bottom).offset(20)
-            make.trailing.equalTo(self.snp.trailing).offset(-20)
-            make.leading.equalTo(self.snp.leading).offset(20)
-            make.height.equalTo(self.snp.height).multipliedBy(0.3)
-        }
-        
-        
-    }
-    
-    
     
 }

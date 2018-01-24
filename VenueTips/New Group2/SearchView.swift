@@ -28,19 +28,7 @@ class SearchView: UIView {
         map.showsUserLocation = true
         return map
     }()
-    
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        
-        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .clear
-        cv.register(VenueCell.self, forCellWithReuseIdentifier: "VenueCell")
-        return cv
-    }()
-    
-    
-    
+   
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -68,6 +56,16 @@ class SearchView: UIView {
     func setupVenueSearchBar() {
         
     }
+  
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.backgroundColor = .clear
+        cv.register(VenueCell.self, forCellWithReuseIdentifier: "VenueCell")
+        return cv
+    }()
     
     func setupLocationSearchBar() {
         addSubview(locationSearchBar)

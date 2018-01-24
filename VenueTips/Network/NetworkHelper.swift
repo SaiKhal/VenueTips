@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class NetworkHelper {
     private init () {}
     static let manager = NetworkHelper()
