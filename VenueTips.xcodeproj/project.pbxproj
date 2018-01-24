@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8186883820166050003761A0 /* OtherVenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186883720166050003761A0 /* OtherVenueCell.swift */; };
+		81C665E72017CAE20046A874 /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665E62017CAE20046A874 /* PersistantManager.swift */; };
+		81C665ED2017E3C20046A874 /* VenueCellWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */; };
+		81C665EF2018021A0046A874 /* TipCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665EE2018021A0046A874 /* TipCreationVC.swift */; };
+		81C665F1201808020046A874 /* OtherCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665F0201808020046A874 /* OtherCreationView.swift */; };
 		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
 		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
 		C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEE52011255F0019CFD3 /* VenueResults.swift */; };
@@ -49,6 +54,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8186883720166050003761A0 /* OtherVenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVenueCell.swift; sourceTree = "<group>"; };
+		81C665E62017CAE20046A874 /* PersistantManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
+		81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCellWithAdd.swift; sourceTree = "<group>"; };
+		81C665EE2018021A0046A874 /* TipCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCreationVC.swift; sourceTree = "<group>"; };
+		81C665F0201808020046A874 /* OtherCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCreationView.swift; sourceTree = "<group>"; };
 		C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C42D5DA5200FCBDD007D76C5 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C484AEE52011255F0019CFD3 /* VenueResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueResults.swift; sourceTree = "<group>"; };
@@ -121,6 +131,7 @@
 			children = (
 				C484AEE52011255F0019CFD3 /* VenueResults.swift */,
 				C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */,
+				81C665E62017CAE20046A874 /* PersistantManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				C484AEEC20112C0C0019CFD3 /* VenueCell.swift */,
+				8186883720166050003761A0 /* OtherVenueCell.swift */,
+				81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -195,6 +208,7 @@
 				C4AB3222200FB1390044137B /* ResultsView.swift */,
 				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
 				C4AB3220200F00760044137B /* CreationView.swift */,
+				81C665F0201808020046A874 /* OtherCreationView.swift */,
 			);
 			name = Views;
 			path = "New Group2";
@@ -206,6 +220,7 @@
 				C4AB3213200EA92A0044137B /* SearchVC.swift */,
 				C4AB3224200FB1CA0044137B /* ResultsVC.swift */,
 				C4AB321E200EFF520044137B /* CreationVC.swift */,
+				81C665EE2018021A0046A874 /* TipCreationVC.swift */,
 				C4AB3217200EAACE0044137B /* CollectionsVC.swift */,
 			);
 			name = Controllers;
@@ -358,7 +373,10 @@
 				C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */,
 				C4AB3223200FB1390044137B /* ResultsView.swift in Sources */,
 				C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */,
+				81C665F1201808020046A874 /* OtherCreationView.swift in Sources */,
+				81C665EF2018021A0046A874 /* TipCreationVC.swift in Sources */,
 				C4AB3225200FB1CA0044137B /* ResultsVC.swift in Sources */,
+				81C665E72017CAE20046A874 /* PersistantManager.swift in Sources */,
 				C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
 				C484AEE9201125920019CFD3 /* VenueSearchAPIClient.swift in Sources */,
@@ -367,10 +385,12 @@
 				C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */,
 				C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */,
 				C4AB3221200F00760044137B /* CreationView.swift in Sources */,
+				8186883820166050003761A0 /* OtherVenueCell.swift in Sources */,
 				C484AEED20112C0C0019CFD3 /* VenueCell.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
 				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
 				C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */,
+				81C665ED2017E3C20046A874 /* VenueCellWithAdd.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -531,6 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,6 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTips/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -562,6 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTipsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTipsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -579,6 +602,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTipsTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTipsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -595,6 +619,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTipsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTipsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -611,6 +636,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RBE99A2Y96;
 				INFOPLIST_FILE = VenueTipsUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.DrDoom.VenueTipsUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

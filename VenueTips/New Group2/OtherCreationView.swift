@@ -1,15 +1,15 @@
 //
-//  File.swift
+//  OtherCreationView.swift
 //  VenueTips
 //
-//  Created by Masai Young on 1/16/18.
+//  Created by C4Q on 1/23/18.
 //  Copyright © 2018 Masai Young. All rights reserved.
 //
 
 import UIKit
 
-class CreationView: UIView {
-    
+class OtherCreationView: UIView {
+
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()
@@ -42,7 +42,12 @@ class CreationView: UIView {
         iv.text = "Add or Create Collections"
         return iv
     }()
-   
+    lazy var tipLabel: UILabel = {
+        let lab = UILabel()
+        lab.text = "Leave a tip"
+        lab.textAlignment = .center
+        return lab
+    }()
     lazy var textField: UITextField = {
         let tf = UITextField()
         //tf.backgroundColor = .blue
@@ -51,7 +56,14 @@ class CreationView: UIView {
         tf.placeholder = "enter a new collection title"
         return tf
     }()
-   
+    lazy var textView: UITextView = {
+        let tv = UITextView()
+        // tv.text = ""
+        tv.layer.cornerRadius = 10
+        tv.layer.borderWidth = 2
+        tv.layer.borderColor = UIColor.lightGray.cgColor
+        return tv
+    }()
     lazy var headerStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -66,91 +78,60 @@ class CreationView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    lazy var customView = CollectionsView()
+    
     private func setupViews() {
         setHeaderStackView()
         setTextField()
-}
+        setupTipLabel()
+        setupTextView()
+        setupCollectionView()
+    }
     func setTextField() {
         self.addSubview(textField)
         textField.translatesAutoresizingMaskIntoConstraints = false
-       textField.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 15).isActive = true
+        textField.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 15).isActive = true
         textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
         textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
         textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
-}
-
-
-func setHeaderStackView() {
-    self.addSubview(headerStackView)
-    headerStackView.translatesAutoresizingMaskIntoConstraints = false
-    headerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-    headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-    headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-    
-    titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    
-}
-  
-
-    
-}
-    /*
- 
- 
-    lazy var tipField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.borderStyle = .roundedRect
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
- 
-    lazy var largeField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.borderStyle = .roundedRect
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
- 
-    func setupViews() {
-        setHeaderStackView()
-        setTitleField()
-        setTipField()
-        setLargeField()
     }
- 
+    
+    
     func setHeaderStackView() {
         self.addSubview(headerStackView)
         headerStackView.translatesAutoresizingMaskIntoConstraints = false
         headerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
         headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
         headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
- 
+        
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-
+        
     }
- 
-    
-    func setTipField() {
-        self.addSubview(tipField)
-        tipField.translatesAutoresizingMaskIntoConstraints = false
-        tipField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 20).isActive = true
-        tipField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        tipField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        tipField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
-
+    private func setupTipLabel() {
+        addSubview(tipLabel)
+        tipLabel.translatesAutoresizingMaskIntoConstraints = false
+        tipLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 15).isActive = true
+        tipLabel.leadingAnchor.constraint(equalTo: textField.leadingAnchor).isActive = true
+        tipLabel.trailingAnchor.constraint(equalTo: textField.trailingAnchor).isActive = true
+        tipLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
     }
-    
-    func setLargeField() {
-        self.addSubview(largeField)
-        largeField.translatesAutoresizingMaskIntoConstraints = false
-        largeField.topAnchor.constraint(equalTo: tipField.bottomAnchor, constant: 20).isActive = true
-        largeField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        largeField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        largeField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3).isActive = true
-
+    private func setupTextView() {
+        addSubview(textView)
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.topAnchor.constraint(equalTo: tipLabel.bottomAnchor, constant: 15).isActive = true
+        textView.leadingAnchor.constraint(equalTo: tipLabel.leadingAnchor).isActive = true
+        textView.trailingAnchor.constraint(equalTo: tipLabel.trailingAnchor).isActive = true
+        textView.bottomAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+    }
+    private func setupCollectionView() {
+        addSubview(customView)
+        customView.translatesAutoresizingMaskIntoConstraints = false
+        customView.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 10).isActive = true
+        customView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
+        customView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        customView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10).isActive = true
+        
     }
 
 }
- */
