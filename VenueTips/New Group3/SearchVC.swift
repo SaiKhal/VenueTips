@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchVC: UIViewController {
     
@@ -14,6 +15,9 @@ class SearchVC: UIViewController {
     var searchResults: VenueSearchResults?
     var photoResults: VenuePhotoResults?
     
+    func blah() {
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +26,13 @@ class SearchVC: UIViewController {
         setContentView()
         setNavBar()
         let endpoint = VenueSearchAPIClient.manager.searchEndpointWithNear(near: "Chicago,IL", query: "tacos")
-        VenueSearchAPIClient.manager.getSearchResults(from: endpoint,
-                                                      completionHandler: { self.searchResults = $0; self.searchView.collectionView.reloadData()},
-                                                      errorHandler: {print($0)})
+        
+        VenueSearchAPIClientWithAlamo.manager.getSearchResults(from: endpoint,
+                                                               completionHandler: { self.searchResults = $0; self.searchView.collectionView.reloadData()}, errorHandler: {print($0)})
+        
+//        VenueSearchAPIClient.manager.getSearchResults(from: endpoint,
+//                                                      completionHandler: { self.searchResults = $0; self.searchView.collectionView.reloadData()},
+//                                                      errorHandler: {print($0)})
     }
     
     private func setContentView() {

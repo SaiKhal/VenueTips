@@ -78,6 +78,8 @@ class SearchView: UIView {
         }
     }
     
+    
+    
     func setupMapView() {
         addSubview(mapView)
         self.mapView.snp.makeConstraints { (make) in
