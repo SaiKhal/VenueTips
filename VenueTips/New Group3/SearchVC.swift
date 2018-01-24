@@ -31,13 +31,13 @@ class SearchVC: UIViewController {
         view.addSubview(searchView)
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
+        searchView.venueSearchBar.delegate = self
         searchView.searchBar.delegate = self
         searchView.searchBar.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = true
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
-        
     }
     
     private func setNavBar() {
@@ -106,9 +106,6 @@ extension SearchVC: UICollectionViewDataSource {
         VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
                                                    completionHandler: completion,
                                                    errorHandler: {print($0)})
-        
-        
-        
         return cell
     }
 }
