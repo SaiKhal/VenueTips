@@ -31,13 +31,13 @@ class SearchVC: UIViewController {
         view.addSubview(searchView)
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
-        searchView.searchBar.delegate = self
-        searchView.searchBar.backgroundColor = .white
+        searchView.venueSearchBar.delegate = self
+        searchView.locationSearchBar.delegate = self
+        searchView.locationSearchBar.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = true
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
-        
     }
     
     private func setNavBar() {
@@ -84,7 +84,7 @@ extension SearchVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath) as! VenueCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath) as! VenueCell
         let index = indexPath.item
         guard let venue = searchResults?.response.venues[index] else { return cell }
         cell.backgroundColor = .orange
@@ -97,7 +97,7 @@ extension SearchVC: UICollectionViewDataSource {
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
             ImageDownloader.manager.getImage(from: endpoint,
-                                             completionHandler: {cell.imageView.image = UIImage(data: $0); cell.setNeedsLayout()},
+                                             completionHandler: {cell.venueImageView.image = UIImage(data: $0); cell.setNeedsLayout()},
                                              errorHandler: {print($0)})
 
         }
@@ -106,9 +106,6 @@ extension SearchVC: UICollectionViewDataSource {
         VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
                                                    completionHandler: completion,
                                                    errorHandler: {print($0)})
-        
-        
-        
         return cell
     }
 }

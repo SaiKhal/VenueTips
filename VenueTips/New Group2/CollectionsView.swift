@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SnapKit
 class CollectionsView: UIView {
     
     override init(frame: CGRect) {
@@ -42,14 +42,14 @@ class CollectionsView: UIView {
     
     private func setupCollectionView() {
         self.addSubview(collectionView)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-
-        collectionView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
+        self.collectionView.snp.remakeConstraints {(make) in
+            make.top.equalTo(self.snp.top)
+            make.bottom.equalTo(self.snp.bottom)
+            make.trailing.equalTo(self.snp.trailing)
+            make.leading.equalTo(self.snp.leading)
+            make.width.equalTo(self.snp.width)
+            make.height.equalTo(self.snp.height)
+        }
     }
     
 }
