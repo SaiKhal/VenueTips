@@ -11,6 +11,9 @@ import UIKit
 class SearchVC: UIViewController {
     
     let searchView = SearchView()
+    var searchResults: VenueSearchResults?
+    var photoResults: VenuePhotoResults?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,19 +21,23 @@ class SearchVC: UIViewController {
         // Do any additional setup after loading the view.
         setContentView()
         setNavBar()
+        let endpoint = VenueSearchAPIClient.manager.searchEndpointWithNear(near: "Chicago,IL", query: "tacos")
+        VenueSearchAPIClient.manager.getSearchResults(from: endpoint,
+                                                      completionHandler: { self.searchResults = $0; self.searchView.collectionView.reloadData()},
+                                                      errorHandler: {print($0)})
     }
     
     private func setContentView() {
         view.addSubview(searchView)
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
-        searchView.searchBar.delegate = self
-        searchView.searchBar.backgroundColor = .white
+        searchView.venueSearchBar.delegate = self
+        searchView.locationSearchBar.delegate = self
+        searchView.locationSearchBar.backgroundColor = .white
         navigationController?.navigationBar.backgroundColor = .white
         navigationController?.navigationBar.isTranslucent = true
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
-        
     }
     
     private func setNavBar() {
@@ -71,15 +78,34 @@ extension SearchVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-
 extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return searchResults?.response.venues.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCell", for: indexPath)
-        cell.backgroundColor = .white
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath) as! VenueCell
+        let index = indexPath.item
+        guard let venue = searchResults?.response.venues[index] else { return cell }
+        cell.backgroundColor = .orange
+        if Int(venue.name.count) > 15 {
+            cell.backgroundColor = .blue
+        }
+        
+        
+        let completion: (VenuePhotoResults) -> Void = { (results) in
+            guard let photo = results.response.photos.items.first else { return }
+            let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
+            ImageDownloader.manager.getImage(from: endpoint,
+                                             completionHandler: {cell.venueImageView.image = UIImage(data: $0); cell.setNeedsLayout()},
+                                             errorHandler: {print($0)})
+
+        }
+        
+        let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
+        VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
+                                                   completionHandler: completion,
+                                                   errorHandler: {print($0)})
         return cell
     }
 }
