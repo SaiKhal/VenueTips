@@ -33,6 +33,7 @@ class CollectionsVC: UIViewController {
     }
     
     @objc func nextViewController() {
+        
         present(CreationVC(), animated: true, completion: nil)
     }
 
@@ -72,12 +73,19 @@ extension CollectionsVC: UICollectionViewDataSource {
         cell.textLabel.text = names[indexPath.row]
         
         //TODO: cell's image
+        
+        guard !PersistantManager.Manager.getCollections().isEmpty, PersistantManager.Manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
         let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
         
         cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
         return cell
     }
-    
-    
+}
+
+extension CollectionsVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: selecte cell to present detailVC
+        
+    }
 }
 
