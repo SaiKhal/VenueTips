@@ -25,7 +25,6 @@ class VenueSearchAPIClientWithAlamo {
             endpoint = searchEndpointWithNear(near: locationName, query: query)
         }
         
-        
         Alamofire.request(endpoint).responseJSON { (response) in
             guard let data = response.data else { return }
             switch response.result {
@@ -42,7 +41,6 @@ class VenueSearchAPIClientWithAlamo {
             }
             
         }
-        
         
     }
     
