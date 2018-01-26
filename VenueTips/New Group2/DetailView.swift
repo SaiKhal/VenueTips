@@ -84,6 +84,8 @@ class VenueDetailView: UIView {
         addSubview(venueImageView)
         venueImageView.snp.makeConstraints{(make) -> Void in
             make.top.equalTo(venueLabel.snp.bottom).multipliedBy(1)
+            make.leading.equalTo(snp.leading)
+            make.trailing.equalTo(snp.trailing)
             make.width.equalTo(snp.width)
             make.height.equalTo(snp.height).multipliedBy(0.64)
         }

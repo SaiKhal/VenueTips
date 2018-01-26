@@ -59,7 +59,7 @@ extension CreationVC: UITextFieldDelegate {
 //            return false
 //        }
         textField.resignFirstResponder()
-       // self.newTitle = textField.text
+        self.newTitle = textField.text
         return true
     }
     

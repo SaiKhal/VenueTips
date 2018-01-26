@@ -10,8 +10,8 @@ import UIKit
 
 class ResultsVC: UIViewController {
     
-    let resultsView = ResultsView()
-    var searchResults: VenueSearchResults?
+    private let resultsView = ResultsView()
+    private var searchResults: VenueSearchResults?
     
     init(results: VenueSearchResults?) {
         searchResults = results

@@ -19,12 +19,10 @@ struct Coordinate {
 
 class SearchVC: UIViewController {
     
-    let searchView = SearchView()
-    var currentSelectedVenue: VenueSearchResults!
+    private let searchView = SearchView()
+    private var currentSelectedVenue: VenueSearchResults!
     private var annotations = [MKAnnotation]()
-    
-    var searchResults: VenueSearchResults?
-    
+    private var searchResults: VenueSearchResults?
     
     func createAnnotations() {
         //TODO: - create annotations

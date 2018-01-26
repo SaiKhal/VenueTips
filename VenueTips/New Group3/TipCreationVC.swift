@@ -75,7 +75,7 @@ class TipCreationVC: UIViewController {
             return
         }
         newTitle = creationView.textField.text!
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
     }
     // dismiss VC
     @objc func dismissModalVC() {

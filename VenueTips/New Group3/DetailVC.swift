@@ -11,8 +11,8 @@ import CoreLocation
 
 class VenueDetailVC: UIViewController {
     
-    var venue: Venue!
-    var photo: UIImage!
+    private var venue: Venue!
+    private var photo: UIImage!
     
     let detailView = VenueDetailView()
     
