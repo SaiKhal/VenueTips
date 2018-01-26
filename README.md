@@ -114,32 +114,6 @@ Some of the design patterns we decided to use to model our app.
  ```
     
     
-
-### Git
-
-Unlike homework in the past where you forked a C4Q repo, then committed and pushed at the end, a group project must be more colloborative.
-
-Each group member should have their own *branch* with their name.  The *master* branch should only contain a working build of the project.  Each group member will work on their separate branches, then push their work to the master branch when they have completed a feature.  But how do you know what to work on?
-
-### Trello
-
-Each group member should have an account on [Trello](https://trello.com/) and the group should have a well maintained list of who is working on what task.  Without this, two people might try to edit the same file and create merge conflicts.
-
-[Example](https://trello.com/b/DnZvFigA/agile-board)
-
-
-### Group Roles
-
-The expectation is that everyone in a group is chiefly occupied with writing code.  In addition to that, the following roles are important for someone to have explicit ownership of:
-
-|Role|Responsibilities|
-|:-------------:|:------------:|
-| Technical Lead | In charge of maintaining the health of master branch and ensure that master is always safe to pull from.  Makes final decisions on project architecture in conversation with other team members |
-| Project Manager | Is responsible for the health of the Trello or board.  Organizes daily standups |
-| UI/UX | Is responsible for the design and flow of the app |
-| QA | Is responsible for identifying bugs on master and that the final product is bug free |
-
-
 ## Gifs
 
 |User Allowing Access|User Denying Location Access|
@@ -182,94 +156,7 @@ The expectation is that everyone in a group is chiefly occupied with writing cod
 <img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/get-directions.gif" width="358" height="626">
 </p>
 
-**Github**
-* Designate a team member to create a new Github Repo e.g "VenueTips" repo
-* Create the following branches: ```prod``` ```qa``` and ```dev``` 
-* ```prod``` - this is the production branch that we will be reviewing as your final project submission 
-* ```dev-group-member-name``` - this is your personal branch. Use this branch while working on your feature set. After you're done meet with team members to code review and merge your changes to the ```qa``` branch 
-* ```qa``` - this branch should be used for testing your app, QA (quality assurance) branch. After the team has reviewed and tested on the ```qa``` branch you group will then merge to the production branch ```prod```
 
-
-
-**Apply for a Foursquare Developer Account and API Key:**  
-https://developer.foursquare.com/docs/api/getting-started  
-
-[Foursquare Endpoint Overview](https://developer.foursquare.com/docs/api/endpoints)  
-
-**Venue Search Endpoint:**  
-Request: 
-```
-GET https://api.foursquare.com/v2/venues/search
-```
-
-**Venue Photos Endpoint:**  
-Request: 
-```
-GET https://api.foursquare.com/v2/venues/VENUE_ID/photos
-```
-
-## Rubric 
-
-|Architecture | Point|
-|:----|:---|
-|Variable Naming and Readability|4 Points|
-|App uses AutoLayout correctly for all iPhones in portrait|4 Points|
-|Proper Object Oriented Priciples are applied|4 Points|
-|App uses MVC Design Patterns|4 Points|
-|Proper use of Access Modifiers|4 Points|
-|Proper use of Activity Indicators where applicable|4 Points|
-|Keyboard Handling|4 Points|
-
-
-|App Specific | Point|
-|:----|:---|
-|App shows coffee shops by Search in the case of location denial access|4 Points|
-|Clicking on directions should open Apple Maps|4 Points|
-|User should be able to create a tip about a venue|4 Points|
-|User should be able to save a venue|8 Points|
-
-
-|Group Specific | Point|
-|:----|:---|
-|Group Presentation|10 Points|
-|README|4 Points|
-|Gif|4 Points|
-
-
-|Github | Point|
-|:----|:---|
-|Each Group member created their own branch in this project|2 Points|
-|Commits from Group members|4 Points|
-|All branches were merged to ```master```|2 Points|
-
-
-|Cocoapods | Point|
-|:----|:---|
-|Use of SnapKit for ProgrammableUI layouts|4 Points|
-|Use of Alamofire for Networking|4 Points|
-
-
-|Error Handling and Network Handling | Point|
-|:----|:---|
-|Loss of Network Handling|4 Points|
-|Proper error handling and notification to user|4 Points|
-|Use empty states in app|4 Points|
-|Proper handling of denial of location services request from user|4 Points|
-
-
-|Gestures and Animations | Point|
-|:----|:---|
-|Gestures are used as needed where uses expect such behavior|2 Points|
-|Animations are included while using best practices|4 Points|
-
-Total Points: 106 points 
-
-|Bonus Features | Point|
-|:----|:---|
-|Update a Venue|2 Points|
-|Update a Collection|2 Points|
-|Delete venue from a collection|2 Points|
-|Delete Collection|2 Points|
 
 
 
