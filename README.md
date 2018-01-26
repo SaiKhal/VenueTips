@@ -7,9 +7,9 @@ Project Manager | Tech Lead | UI/UX Designer | Quality Assurance
 Iram | Masai | Nicole | XianXian
 
 
-## Links
+### Trello
 
-Trello: https://trello.com/b/bHwSih0g/group-project
+Trello: https://trello.com/b/bHwSih0g/venuetips
 
 ## Overview 
 
