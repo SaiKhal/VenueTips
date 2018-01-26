@@ -1,5 +1,10 @@
 ## VenueTips 
 
+### Group Roles 
+
+Project Manager | Tech Lead | UI/UX Designer | Quality Assurance
+--- | --- | --- | ---
+Iram | Masai | Nicole | XianXian
 
 
 ## Links
