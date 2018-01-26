@@ -7,44 +7,65 @@
 //
 
 import Foundation
+import Alamofire
+import CoreLocation
 
-struct VenueSearchAPIClient {
+class VenueSearchAPIClientWithAlamo {
     private init() {}
-    static let manager = VenueSearchAPIClient()
+    static let manager = VenueSearchAPIClientWithAlamo()
     
-    func getSearchResults(from urlStr: String, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: (Error) -> Void) {
-        guard let url = URL(string: urlStr) else {return}
+    func getSearchResults(from venueEndpoint: VenueEndpoint, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: @escaping (Error) -> Void) {
         
-        //        if let cachedImage = ImageCache.manager.getImage(urlStr: urlStr) {
-        //            completionHandler(cachedImage)
-        //            return
-        //        }
+        var endpoint = String()
         
-        let completion: (Data) -> Void = {(data: Data) in
-            do {
-                let results = try JSONDecoder().decode(VenueSearchResults.self, from: data)
-                completionHandler(results)
-            }
-            catch {
-                print(error)
-            }
+        if let userLocation = venueEndpoint.userLocation, venueEndpoint.locationName == nil {
+            endpoint = searchEndpointWithUserLocation(userLocation)
+        } else {
+            guard let locationName = venueEndpoint.locationName, let query = venueEndpoint.query else { return }
+            endpoint = searchEndpointWithNear(near: locationName, query: query)
         }
-        NetworkHelper.manager.performDataTask(with: URLRequest(url: url),
-                                              completionHandler: completion,
-                                              errorHandler: {print($0)})
+        
+        Alamofire.request(endpoint).responseJSON { (response) in
+            guard let data = response.data else { return }
+            switch response.result {
+            case .success:
+                do {
+                    let results = try JSONDecoder().decode(VenueSearchResults.self, from: data)
+                    completionHandler(results)
+                }
+                catch {
+                    print(error)
+                }
+            case let .failure(error):
+                errorHandler(error)
+            }
+            
+        }
+        
     }
     
     func searchEndpointWithNear(near: String, query: String) -> String {
         var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
         endpoint?.queryItems = [
             URLQueryItem(name: "near", value: near),
-            URLQueryItem(name: "oauth_token", value: "BAKSUNZT0PTGTTLTWFGGXDGYLGKFBRCPZFU1EA4221TM1DIM"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
             URLQueryItem(name: "v", value: "20180117"), //ENDPOINT USES CURRENT DAYS DATE?
             URLQueryItem(name: "query", value: query)
         ]
         let venueEndpoint = endpoint?.url?.absoluteString
         return venueEndpoint!
     }
+    
+    func searchEndpointWithUserLocation(_ coord: CLLocationCoordinate2D) -> String {
+        var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
+        endpoint?.queryItems = [
+            URLQueryItem(name: "ll", value: "\(coord.latitude),\(coord.longitude)"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
+            URLQueryItem(name: "v", value: "20180117") //ENDPOINT USES CURRENT DAYS DATE?
+        ]
+        let venueEndpoint = endpoint?.url?.absoluteString
+        return venueEndpoint!
+    }
 }
-
-

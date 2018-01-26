@@ -7,38 +7,39 @@
 //
 
 import Foundation
+import Alamofire
 
-struct VenuePhotoAPIClient {
+class VenuePhotoAPIClient {
     private init() {}
     static let manager = VenuePhotoAPIClient()
     
-    func getVenuePhotos(from urlStr: String, completionHandler: @escaping (VenuePhotoResults) -> Void, errorHandler: (Error) -> Void) {
-        guard let url = URL(string: urlStr) else {return}
+    func getVenuePhotos(from urlStr: String, completionHandler: @escaping (VenuePhotoResults) -> Void, errorHandler: @escaping (Error) -> Void) {
         
-//        if let cachedImage = ImageCache.manager.getImage(urlStr: urlStr) {
-//            completionHandler(cachedImage)
-//            return
-//        }
-        
-        let completion: (Data) -> Void = {(data: Data) in
-            do {
-                let photos = try JSONDecoder().decode(VenuePhotoResults.self, from: data)
-                completionHandler(photos)
+        Alamofire.request(urlStr).responseJSON { (response) in
+            guard let data = response.data else { return }
+            switch response.result {
+            case .success:
+                do {
+                    let results = try JSONDecoder().decode(VenuePhotoResults.self, from: data)
+                    completionHandler(results)
+                }
+                catch {
+                    print(error)
+                }
+            case let .failure(error):
+                errorHandler(error)
             }
-            catch {
-                print(error)
-            }
+            
         }
-        NetworkHelper.manager.performDataTask(with: URLRequest(url: url),
-                                              completionHandler: completion,
-                                              errorHandler: {print($0)})
+        
     }
     
     func photoEndpoint(venue: Venue) -> String {
         let venueID = venue.id
         var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/\(venueID)/photos")
         endpoint?.queryItems = [
-            URLQueryItem(name: "oauth_token", value: "BAKSUNZT0PTGTTLTWFGGXDGYLGKFBRCPZFU1EA4221TM1DIM"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
             URLQueryItem(name: "v", value: "20180117") //ENDPOINT USES CURRENT DAYS DATE?
         ]
         let venueEndpoint = endpoint?.url?.absoluteString
