@@ -32,20 +32,6 @@ class VenuePhotoAPIClient {
             
         }
         
-        guard let url = URL(string: urlStr) else {return}
-
-        let completion: (Data) -> Void = {(data: Data) in
-            do {
-                let photos = try JSONDecoder().decode(VenuePhotoResults.self, from: data)
-                completionHandler(photos)
-            }
-            catch {
-                print(error)
-            }
-        }
-        NetworkHelper.manager.performDataTask(with: URLRequest(url: url),
-                                              completionHandler: completion,
-                                              errorHandler: {print($0)})
     }
     
     func photoEndpoint(venue: Venue) -> String {
