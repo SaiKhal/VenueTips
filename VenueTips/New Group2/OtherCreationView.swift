@@ -78,7 +78,8 @@ class OtherCreationView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
-    lazy var customView = CollectionsView()
+    
+    lazy var customView = OtherCollectionView()
     
     private func setupViews() {
         setHeaderStackView()

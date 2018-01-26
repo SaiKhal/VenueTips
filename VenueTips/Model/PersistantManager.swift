@@ -9,8 +9,9 @@
 import Foundation
 import UIKit
 class PersistantManager {
+    
     private init() {}
-    static var Manager = PersistantManager()
+    static var manager = PersistantManager()
     let kPath = "myVenues.plist"
     let cPath = "collections.plist"
     var collectionNames = [String]() {
@@ -102,9 +103,9 @@ class PersistantManager {
     // add venues, save image to file
     func addVenue(newVenue: Venue, and newImage: UIImage, collectionName: String, tip: String?) {
         // check venue already saved or not
-        let index = venues[collectionName]!.index(where: {newVenue.id == $0.0.id})
+        let index = venues[collectionName]?.index(where: {newVenue.id == $0.0.id})
         if index != nil { return }
-        self.venues[collectionName]!.append((newVenue, tip))
+        self.venues[collectionName]?.append((newVenue, tip))
         
         let imageUrl = dataFilePath(of: newVenue.id)
         if let imageData = UIImagePNGRepresentation(newImage) {

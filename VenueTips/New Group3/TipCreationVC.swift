@@ -14,9 +14,10 @@ class TipCreationVC: UIViewController {
     let cellSpacing: CGFloat = 1.0
     let edgeSpacing: CGFloat = 10.0
     let creationView = OtherCreationView()
+    
     var newTip: String! {
         didSet{
-            PersistantManager.Manager.addVenue(newVenue: self.venue, and: self.image, collectionName: self.selectedTitle, tip: newTip)
+            PersistantManager.manager.addVenue(newVenue: self.venue, and: self.image, collectionName: self.selectedTitle, tip: newTip)
             
             creationView.customView.collectionView.reloadData()
             showSavedAlert()
@@ -28,7 +29,7 @@ class TipCreationVC: UIViewController {
         didSet {
             print("add newTitle: \(newTitle)")
             // Add new cell to the main collections
-            PersistantManager.Manager.addNewCollection(newName: newTitle ?? "NO title here")
+            PersistantManager.manager.addNewCollection(newName: newTitle ?? "NO title here")
         
         }
     }
@@ -62,24 +63,19 @@ class TipCreationVC: UIViewController {
         creationView.textField.delegate = self
      
         creationView.customView.collectionView.delegate = self
-         creationView.customView.collectionView.dataSource = self
-        
+        creationView.customView.collectionView.dataSource = self
         
     }
+    
     // create new collection:
     @objc func create() {
-      
         print("Create collection")
         guard creationView.textField.text != nil, creationView.textField.text != "" else {
             showAlert()
             return
         }
         newTitle = creationView.textField.text!
-        
-        
-        
-        
-       // self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     // dismiss VC
     @objc func dismissModalVC() {
@@ -131,24 +127,24 @@ extension TipCreationVC: UITextFieldDelegate {
 //TODO: handle the collectionView
 extension TipCreationVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PersistantManager.Manager.getCollections().count
+        return PersistantManager.manager.getCollections().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "venueCellWithAdd", for: indexPath) as! VenueCellWithAdd
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 10
-        let names = PersistantManager.Manager.getCollections()
+        let names = PersistantManager.manager.getCollections()
         cell.textLabel.text = names[indexPath.row]
         
         
         //cell.addButton.addTarget(self, action: #selector(addTip), for: .touchUpInside)
         
         cell.imageView.image = self.image
-        guard !PersistantManager.Manager.getCollections().isEmpty, PersistantManager.Manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
-        let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
+        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
+        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!.0
         
-        cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
+        cell.imageView.image = PersistantManager.manager.getImage(venue: lastAddedVenue)
         return cell
     }
     
@@ -156,7 +152,7 @@ extension TipCreationVC: UICollectionViewDataSource {
 }
 extension TipCreationVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.selectedTitle = PersistantManager.Manager.getCollections()[indexPath.row]
+        self.selectedTitle = PersistantManager.manager.getCollections()[indexPath.row]
     }
 }
 
@@ -180,26 +176,3 @@ extension TipCreationVC: UICollectionViewDelegateFlowLayout {
         return cellSpacing
     }
 }
-
-//extension TipCreationVC: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return PersistantManager.Manager.getCollections().count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "venueCellWithAdd", for: indexPath) as! VenueCellWithAdd
-//        cell.backgroundColor = .white
-//        cell.layer.cornerRadius = 10
-//        let names = PersistantManager.Manager.getCollections()
-//        cell.textLabel.text = names[indexPath.row]
-//
-//        //TODO: cell's image
-//        let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
-//
-//        cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
-//        return cell
-//    }
-//
-//
-//}
-
