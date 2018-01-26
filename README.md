@@ -51,7 +51,20 @@ Some of the design patterns we decided to use to model our app.
         fatalError("Not using coder!")
     }  
 ```
+2. CocoaPods. We made use of various pods for different features. Here are some examples below 
+    * KingFisher used to load and store images 
+```swift 
 
+        let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
+            guard let photo = results.response.photos.items.first else { return }
+            let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
+            let placeholderImage = UIImage(named: "placeholder-image")
+            cell.imageView?.kf.indicatorType = .activity
+            cell.imageView?.kf.setImage(with: URL(string: endpoint)!, placeholder: placeholderImage, completionHandler: { (_, _, _, _) in
+                cell.setNeedsLayout()
+            })
+        }
+```
 
 ### Git
 
