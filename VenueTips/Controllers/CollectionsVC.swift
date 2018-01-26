@@ -25,7 +25,7 @@ class CollectionsVC: UIViewController {
         collectionsView.collectionView.dataSource = self
         
         navigationItem.title = "Collections"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(nextViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(nextViewController))
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)

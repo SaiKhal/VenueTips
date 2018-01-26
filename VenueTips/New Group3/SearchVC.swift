@@ -110,7 +110,7 @@ class SearchVC: UIViewController {
         navigationController?.navigationBar.isTranslucent = true
         
         //        Add right bar button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "??", style: .plain, target: self, action: #selector(showResultsVC))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "listIcon"), style: .plain, target: self, action: #selector(showResultsVC))
     }
     
     @objc func showResultsVC() {
@@ -120,7 +120,7 @@ class SearchVC: UIViewController {
     
 }
 
-//MARK: Map View: Creating callouts
+//MARK: Map View: Map View Delegate
 extension SearchVC: MKMapViewDelegate {
     //TODO: - create callouts
     
@@ -161,10 +161,14 @@ extension SearchVC: MKMapViewDelegate {
     //        }
     
     //Mark: - sending to which VC
-    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-    //        let detailVC = DetailViewController(place: currentSelectedPlace)
-    //        navigationController?.pushViewController(detailVC, animated: true)
-    //    }
+        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+//          TODO
+            
+//            let detailVC = VenueDetailVC(venue: <#T##Venue?#>, photo: <#T##UIImage?#>)
+//            navigationController?.pushViewController(detailVC, animated: true)
+        }
+    
+    
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -197,7 +201,7 @@ extension SearchVC: UISearchBarDelegate {
         }
         
         if (searchView.locationSearchBar.text?.isEmpty)! {
-            locationName = "Chicago, IL"
+            locationName = "Queens, NY"
         } else {
             locationName = searchView.locationSearchBar.text
         }
@@ -206,6 +210,17 @@ extension SearchVC: UISearchBarDelegate {
         VenueSearchAPIClientWithAlamo.manager.getSearchResults(from: venueEndpoint, completionHandler: completion, errorHandler: handle)
         
         
+    }
+}
+
+extension SearchVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! VenueCell
+        let venue = searchResults?.response.venues?[indexPath.row]
+        let image = selectedCell.venueImageView.image
+        
+        let detailVC = VenueDetailVC(venue: venue, photo: image)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

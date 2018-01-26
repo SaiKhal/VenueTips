@@ -20,6 +20,8 @@
 		C4199D20201ABC3900F746E3 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D1F201ABC3900F746E3 /* LocationHelper.swift */; };
 		C4199D23201ABC8900F746E3 /* DoDoDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D22201ABC8900F746E3 /* DoDoDistrib.swift */; };
 		C4199D25201ABD2200F746E3 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D24201ABD2200F746E3 /* UserDefaultsHelper.swift */; };
+		C4199D27201AD01A00F746E3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D26201AD01A00F746E3 /* DetailVC.swift */; };
+		C4199D29201AD04200F746E3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D28201AD04200F746E3 /* DetailView.swift */; };
 		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
 		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
 		C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEE52011255F0019CFD3 /* VenueResults.swift */; };
@@ -82,6 +84,8 @@
 		C4199D1F201ABC3900F746E3 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationHelper.swift; path = /Users/Masai/Code/C4Q/VenueTips/VenueTips/Network/LocationHelper.swift; sourceTree = "<absolute>"; };
 		C4199D22201ABC8900F746E3 /* DoDoDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoDoDistrib.swift; sourceTree = "<group>"; };
 		C4199D24201ABD2200F746E3 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		C4199D26201AD01A00F746E3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		C4199D28201AD04200F746E3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C42D5DA5200FCBDD007D76C5 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C484AEE52011255F0019CFD3 /* VenueResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueResults.swift; sourceTree = "<group>"; };
@@ -251,10 +255,11 @@
 		C4AB320D200EA2900044137B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				81F1A0BD2016714300CF31F1 /* VenueCell.swift */,
 				C4AB3219200EEFA10044137B /* SearchBars */,
 				C484AEEE20112CB70019CFD3 /* Cells */,
+				C4199D28201AD04200F746E3 /* DetailView.swift */,
 				C4AB3211200EA8090044137B /* SearchView.swift */,
+				81F1A0BD2016714300CF31F1 /* VenueCell.swift */,
 				C4AB3222200FB1390044137B /* ResultsView.swift */,
 				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
 				C4AB3220200F00760044137B /* CreationView.swift */,
@@ -267,6 +272,7 @@
 		C4AB320E200EA2970044137B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C4199D26201AD01A00F746E3 /* DetailVC.swift */,
 				C4AB3213200EA92A0044137B /* SearchVC.swift */,
 				C4AB3224200FB1CA0044137B /* ResultsVC.swift */,
 				C4AB321E200EFF520044137B /* CreationVC.swift */,
@@ -605,10 +611,12 @@
 				C4199D1A201A654500F746E3 /* ImageCache.swift in Sources */,
 				C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
+				C4199D29201AD04200F746E3 /* DetailView.swift in Sources */,
 				C484AEE9201125920019CFD3 /* VenueSearchAPIClient.swift in Sources */,
 				C4199D25201ABD2200F746E3 /* UserDefaultsHelper.swift in Sources */,
 				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
 				C4199D23201ABC8900F746E3 /* DoDoDistrib.swift in Sources */,
+				C4199D27201AD01A00F746E3 /* DetailVC.swift in Sources */,
 				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
 				C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */,
 				C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */,

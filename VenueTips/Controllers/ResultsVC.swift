@@ -51,12 +51,32 @@ class ResultsVC: UIViewController {
 }
 
 extension ResultsVC: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath)
+        let venue = searchResults?.response.venues?[indexPath.row]
+        let image = selectedCell?.imageView?.image
+        
+        let detailVC = VenueDetailVC(venue: venue, photo: image)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension ResultsVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if searchResults?.response.venues == nil {
+            tableView.backgroundView = {
+                let label = UILabel()
+                label.text = "You have no results!"
+                label.center = tableView.center
+                label.textAlignment = .center
+                tableView.separatorStyle = .none
+                return label
+            }()
+            return 0
+        } else {
+            tableView.backgroundView = nil
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
