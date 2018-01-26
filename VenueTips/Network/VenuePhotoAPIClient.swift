@@ -38,7 +38,8 @@ struct VenuePhotoAPIClient {
         let venueID = venue.id
         var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/\(venueID)/photos")
         endpoint?.queryItems = [
-            URLQueryItem(name: "oauth_token", value: "BAKSUNZT0PTGTTLTWFGGXDGYLGKFBRCPZFU1EA4221TM1DIM"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
             URLQueryItem(name: "v", value: "20180117") //ENDPOINT USES CURRENT DAYS DATE?
         ]
         let venueEndpoint = endpoint?.url?.absoluteString

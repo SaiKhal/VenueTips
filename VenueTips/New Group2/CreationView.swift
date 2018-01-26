@@ -24,7 +24,34 @@ class CreationView: UIView {
         backgroundColor = .white
         setupViews()
     }
-    
+    lazy var dismissVCButton: UIButton = {
+        let bttn = UIButton()
+        bttn.setTitle("Cancel", for: .normal)
+        //bttn.backgroundColor = .white
+        bttn.setTitleColor(.orange, for: .normal)
+        return bttn
+    }()
+    lazy var creationButton: UIButton = {
+        let bttn = UIButton()
+        bttn.setTitle("Create", for: .normal)
+        bttn.setTitleColor(.orange, for: .normal)
+        return bttn
+    }()
+    lazy var titleLabel: UILabel = {
+        let iv = UILabel()
+        iv.text = "Add or Create Collections"
+        return iv
+    }()
+   
+    lazy var textField: UITextField = {
+        let tf = UITextField()
+        //tf.backgroundColor = .blue
+        tf.borderStyle = .roundedRect
+        tf.layer.cornerRadius = 10
+        tf.placeholder = "enter a new collection title"
+        return tf
+    }()
+   
     lazy var headerStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -39,34 +66,37 @@ class CreationView: UIView {
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
+    private func setupViews() {
+        setHeaderStackView()
+        setTextField()
+}
+    func setTextField() {
+        self.addSubview(textField)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+       textField.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 15).isActive = true
+        textField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+        textField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+        textField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+}
+
+
+func setHeaderStackView() {
+    self.addSubview(headerStackView)
+    headerStackView.translatesAutoresizingMaskIntoConstraints = false
+    headerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+    headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+    headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
     
-    lazy var dismissVCButton: UIButton = {
-        let bttn = UIButton()
-        bttn.backgroundColor = .orange
-        return bttn
-    }()
+    titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     
-    lazy var titleLabel: UILabel = {
-        let iv = UILabel()
-        iv.text = "Add or Create Collections"
-        return iv
-    }()
+}
+  
+
     
-    lazy var creationButton: UIButton = {
-        let bttn = UIButton()
-        bttn.setTitle("CREATE", for: .normal)
-        bttn.setTitleColor(.orange, for: .normal)
-        return bttn
-    }()
-    
-    lazy var titleField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.borderStyle = .roundedRect
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
-    
+}
+    /*
+ 
+ 
     lazy var tipField: UITextField = {
         let tf = UITextField()
         tf.backgroundColor = .blue
@@ -74,6 +104,15 @@ class CreationView: UIView {
         tf.layer.cornerRadius = 10
         return tf
     }()
+<<<<<<< HEAD
+ 
+    lazy var largeField: UITextField = {
+        let tf = UITextField()
+        tf.backgroundColor = .blue
+        tf.borderStyle = .roundedRect
+        tf.layer.cornerRadius = 10
+        return tf
+=======
     
     lazy var largeField: UITextView = {
         let tv = UITextView()
@@ -81,8 +120,9 @@ class CreationView: UIView {
         //tv.borderStyle = .roundedRect
         tv.layer.cornerRadius = 10
         return tv
+>>>>>>> QA
     }()
-    
+ 
     func setupViews() {
         setTitleLabel()
         setHeaderStackView()
@@ -98,9 +138,20 @@ class CreationView: UIView {
         }
 
     }
-    
+ 
     func setHeaderStackView() {
         self.addSubview(headerStackView)
+<<<<<<< HEAD
+        headerStackView.translatesAutoresizingMaskIntoConstraints = false
+        headerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
+        headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
+        headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+ 
+        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+
+    }
+ 
+=======
         self.headerStackView.snp.makeConstraints { (make) in
             make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(30)
             make.right.equalTo(self.snp.right).offset(-20)
@@ -120,6 +171,7 @@ class CreationView: UIView {
         }
         
     }
+>>>>>>> QA
     
     func setTipField() {
         self.addSubview(tipField)
@@ -131,5 +183,10 @@ class CreationView: UIView {
         }
         
     }
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> QA
 }
+ */

@@ -25,6 +25,7 @@ class SearchView: UIView {
     
     lazy var mapView: MKMapView = {
         let map = MKMapView()
+        map.mapType = .standard
         map.showsUserLocation = true
         return map
     }()
