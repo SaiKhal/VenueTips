@@ -26,11 +26,11 @@ class CreationVC: UIViewController {
         creationView.dismissVCButton.addTarget(self, action: #selector(dismissModalVC), for: .touchUpInside)
         creationView.creationButton.addTarget(self, action: #selector(create), for: .touchUpInside)
         
-        creationView.textField.delegate = self
+        creationView.titleField.delegate = self
+        creationView.tipField.delegate = self
     }
     
     @objc func create() {
-        
         print("Create collection")
         self.dismiss(animated: true, completion: nil)
     }

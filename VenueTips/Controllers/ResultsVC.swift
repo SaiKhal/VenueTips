@@ -12,11 +12,9 @@ class ResultsVC: UIViewController {
     
     let resultsView = ResultsView()
     var searchResults: VenueSearchResults?
-    var venuesWithImages = [VenueWithImages]()
     
-    
-    init(results: [VenueWithImages]) {
-        venuesWithImages = results
+    init(results: VenueSearchResults?) {
+        searchResults = results
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -42,6 +40,13 @@ class ResultsVC: UIViewController {
         resultsView.tableView.dataSource = self
     }
     
+    lazy var handle: (Error) -> Void = { [unowned self] (error) in
+        //Handles errors NOT from Foursquare API. Mainly IOS errors.
+        if let urlError = error as? URLError, urlError.code == URLError.Code.notConnectedToInternet{
+            self.resultsView.tableView.dodo.error("No internet connection!")
+            self.resultsView.tableView.dodo.style.bar.hideAfterDelaySeconds = 3
+        }
+    }
 
 }
 
@@ -55,23 +60,38 @@ extension ResultsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return venuesWithImages.count ?? 0
+        return searchResults?.response.venues?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
         let index = indexPath.row
-        let venue = venuesWithImages[index].venue
-        cell.textLabel?.text = venue.name
-        if let image = ImageCache.manager.cachedImage(url: URL(string: venuesWithImages[index].imageURL)!) {
-            cell.imageView?.image = image
-        } else {
-            ImageCache.manager.processImageInBackground(imageURL: URL(string: venue.photoURL!)!,
-                                                        completion: {(error, image) in
-                                                            cell.imageView?.image = image; cell.setNeedsLayout()})
+        guard let venue = searchResults?.response.venues?[index] else { return cell }
+        
+        let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
+            guard let photo = results.response.photos.items.first else { return }
+            let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
+            self.searchResults?.response.venues?[index].photoURL = endpoint
+            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
+                cell.imageView?.image = image
+            } else {
+                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
+                                                            completion: {(error, image) in
+                                                                cell.imageView?.image = image; cell.setNeedsLayout()})
+            }
         }
+        
+        let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
+        VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
+                                                   completionHandler: completion,
+                                                   errorHandler: handle)
+        cell.textLabel?.text = venue.name
+        
+        
         return cell
     }
+    
+    
 }
 
 

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import MapKit
 
 struct VenueWithImages {
     let venue: Venue
@@ -18,27 +19,30 @@ struct VenueWithImages {
 class SearchVC: UIViewController {
     
     var venuesWithImages = [VenueWithImages]()
-    
     let searchView = SearchView()
-    var searchResults: VenueSearchResults? {
-        didSet {
-            var imageURL = ""
-            let completionForPhotos: (VenuePhotoResults) -> Void = { (results) in
-                guard let photo = results.response.photos.items.first else { return }
-                let photoURL = "\(photo.purplePrefix)original\(photo.suffix)"
-                imageURL = photoURL
+    var currentSelectedVenue: VenueSearchResults!
+    private var annotations = [MKAnnotation]()
+    
+    
+    var searchResults: VenueSearchResults?
+    
+    
+    func createAnnotations() {
+        //TODO: - create annotations
+        if let venues = searchResults?.response.venues{
+            for venue in venues {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2DMake(venue.location.lat, venue.location.lng)
+                annotation.title = venue.name
+                annotations.append(annotation)
             }
             
-            searchResults?.response.venues?.forEach({ (venue) in
-                let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
-                
-                VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
-                                                           completionHandler: completionForPhotos,
-                                                           errorHandler: handle)
-                
-                let venueWithImage = VenueWithImages(venue: venue, imageURL: imageURL)
-                venuesWithImages.append(venueWithImage)
-            })
+            //TODO: - add annotations to the mapView
+            DispatchQueue.main.async {
+                self.searchView.mapView.addAnnotations(self.annotations)
+                self.searchView.mapView.showAnnotations(self.annotations, animated: true)
+                print("annotations added")
+            }
         }
     }
     
@@ -47,13 +51,22 @@ class SearchVC: UIViewController {
         // Do any additional setup after loading the view.
         setContentView()
         setNavBar()
+        askForUserPermission()
+    }
+    
+    private func askForUserPermission() {
+        let _ = LocationHelper.manager.checkForLocationServices()
     }
     
     lazy var completion: (VenueSearchResults) -> Void = { (result) in
         switch result.meta.code {
         // SUCCESS
         case 200:
+//            self.searchResults?.response.venues?.removeAll()
+            self.searchView.mapView.removeAnnotations(self.annotations)
+            self.annotations.removeAll()
             self.searchResults = result
+            self.createAnnotations()
             self.searchView.collectionView.reloadData()
             print("App should be running successfully.")
         //FAILURE - Handles errors returned from Foursquare API
@@ -86,6 +99,7 @@ class SearchVC: UIViewController {
         searchView.locationSearchBar.backgroundColor = .white
         searchView.collectionView.dataSource = self
         searchView.collectionView.delegate = self
+        searchView.mapView.delegate = self
     }
     
     private func setNavBar() {
@@ -100,10 +114,57 @@ class SearchVC: UIViewController {
     }
     
     @objc func showResultsVC() {
-        let newVC = ResultsVC(results: venuesWithImages)
+        let newVC = ResultsVC(results: searchResults)
         navigationController?.pushViewController(newVC, animated: true)
     }
     
+}
+
+//MARK: Map View: Creating callouts
+extension SearchVC: MKMapViewDelegate {
+    //TODO: - create callouts
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //TODO: - show user blue defualt dot
+        if annotation is MKUserLocation {
+            return nil
+        }
+        
+        //TODO: - set-up annotation view for map
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "VenueAnnotationView") as? MKMarkerAnnotationView
+        if annotationView == nil { // setup annotation view
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "VenueAnnotationView")
+            annotationView?.canShowCallout = true
+            
+            let index = annotations.index{$0 === annotation}
+            if let annotationIndex = index {
+                let venue = searchResults?.response.venues?[annotationIndex]
+                
+                annotationView?.glyphText = "\(venue?.stats.checkinsCount ?? 0)"
+                //annotationView?.glyphText = venue?.categories[0].icon.purplePrefix
+            }
+            
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        } else {
+            annotationView?.annotation = annotation
+        }
+        return annotationView
+    }
+    
+    //        func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    //            //TODO: - find place (in array) selected when user clicks on pin
+    //            let index = annotations.index{$0 === view.annotation}
+    //            guard let annotationIndex = index else { print("index is nil"); return }
+    //            let venue = searchResults?.response.venues[annotationIndex]
+    //
+    //            currentSelectedVenue = venue
+    //        }
+    
+    //Mark: - sending to which VC
+    //    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    //        let detailVC = DetailViewController(place: currentSelectedPlace)
+    //        navigationController?.pushViewController(detailVC, animated: true)
+    //    }
 }
 
 extension SearchVC: UISearchBarDelegate {
@@ -121,11 +182,11 @@ extension SearchVC: UISearchBarDelegate {
         var locationName: String?
         var userLocation: CLLocationCoordinate2D?
         
-//        if CLLocationManager.locationServicesEnabled() {
-//
-//        } else {
-//
-//        }
+        //        if CLLocationManager.locationServicesEnabled() {
+        //
+        //        } else {
+        //
+        //        }
         
         if (searchView.venueSearchBar.text?.isEmpty)! {
             self.searchView.mapView.dodo.style.bar.hideAfterDelaySeconds = 3
@@ -162,7 +223,7 @@ extension SearchVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath) as! VenueCell
         let index = indexPath.item
-        guard var venue = searchResults?.response.venues?[index] else { return cell }
+        guard let venue = searchResults?.response.venues?[index] else { return cell }
         
         let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
             guard let photo = results.response.photos.items.first else { return }
