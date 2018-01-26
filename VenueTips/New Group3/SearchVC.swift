@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import CoreLocation
 import MapKit
+import Kingfisher
 
 struct VenueWithImages {
     let venue: Venue
@@ -238,7 +239,6 @@ extension SearchVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath) as! VenueCell
         let index = indexPath.item
         guard let venue = searchResults?.response.venues?[index] else { return cell }
-        
         let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
