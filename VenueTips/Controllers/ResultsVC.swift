@@ -52,9 +52,9 @@ class ResultsVC: UIViewController {
 
 extension ResultsVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath)
+        let selectedCell = tableView.cellForRow(at: indexPath) as! VenueCell
         let venue = searchResults?.response.venues?[indexPath.row]
-        let image = selectedCell?.imageView?.image
+        let image = selectedCell.venueImageView.image
         
         let detailVC = VenueDetailVC(venue: venue, photo: image)
         navigationController?.pushViewController(detailVC, animated: true)

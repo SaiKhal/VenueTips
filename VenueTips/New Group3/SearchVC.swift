@@ -23,7 +23,6 @@ class SearchVC: UIViewController {
     var currentSelectedVenue: VenueSearchResults!
     private var annotations = [MKAnnotation]()
     
-    
     var searchResults: VenueSearchResults?
     
     

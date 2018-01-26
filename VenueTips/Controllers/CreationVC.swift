@@ -32,11 +32,11 @@ class CreationVC: UIViewController {
     
     @objc func create() {
         print("Create collection")
-        guard creationView.textField.text != nil, creationView.textField.text != "" else {
+        guard creationView.titleField.text != nil, creationView.titleField.text != "" else {
             showAlert()
             return
         }
-        newTitle = creationView.textField.text!
+        newTitle = creationView.titleField.text!
         self.dismiss(animated: true, completion: nil)
     }
     
