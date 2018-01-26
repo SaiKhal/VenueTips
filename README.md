@@ -65,6 +65,55 @@ Some of the design patterns we decided to use to model our app.
             })
         }
 ```
+    
+   * SnapKit used to simplify UI constraints 
+  ```swift 
+  func setupTipLabel() {
+        addSubview(tiplabel)
+        tiplabel.snp.makeConstraints{(make) -> Void in
+            make.top.equalTo(directionButton.snp.bottom)
+            make.width.equalTo(snp.width)
+            make.height.equalTo(snp.height).multipliedBy(0.07)
+            make.centerX.equalTo(snp.centerX)
+        }
+    }
+```
+
+
+   * Alamofire for network requests
+   ```swift 
+   func getSearchResults(from venueEndpoint: VenueEndpoint, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: @escaping (Error) -> Void) {
+        
+        var endpoint = String()
+        
+        if let userLocation = venueEndpoint.userLocation, venueEndpoint.locationName == nil {
+            endpoint = searchEndpointWithUserLocation(userLocation)
+        } else {
+            guard let locationName = venueEndpoint.locationName, let query = venueEndpoint.query else { return }
+            endpoint = searchEndpointWithNear(near: locationName, query: query)
+        }
+        
+        Alamofire.request(endpoint).responseJSON { (response) in
+            guard let data = response.data else { return }
+            switch response.result {
+            case .success:
+                do {
+                    let results = try JSONDecoder().decode(VenueSearchResults.self, from: data)
+                    completionHandler(results)
+                }
+                catch {
+                    print(error)
+                }
+            case let .failure(error):
+                errorHandler(error)
+            }
+            
+        }
+        
+    }
+ ```
+    
+    
 
 ### Git
 
