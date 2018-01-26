@@ -42,6 +42,7 @@ class CreationView: UIView {
     
     lazy var dismissVCButton: UIButton = {
         let bttn = UIButton()
+        bttn.setTitle("CANCEL", for: .normal)
         bttn.backgroundColor = .orange
         return bttn
     }()
@@ -61,73 +62,49 @@ class CreationView: UIView {
     
     lazy var titleField: UITextField = {
         let tf = UITextField()
-        tf.backgroundColor = .blue
         tf.borderStyle = .roundedRect
+        tf.placeholder = "Enter collection title."
         tf.layer.cornerRadius = 10
         return tf
     }()
     
-    lazy var tipField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.borderStyle = .roundedRect
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
     
-    lazy var largeField: UITextField = {
-        let tf = UITextField()
-        tf.backgroundColor = .blue
-        tf.borderStyle = .roundedRect
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
     
     func setupViews() {
+        setTitleLabel()
         setHeaderStackView()
         setTitleField()
-        setTipField()
-        setLargeField()
+        
+    }
+    
+    func setTitleLabel() {
+        self.addSubview(titleLabel)
+        self.titleLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(self.snp.centerX)
+        }
+        
     }
     
     func setHeaderStackView() {
         self.addSubview(headerStackView)
-        headerStackView.translatesAutoresizingMaskIntoConstraints = false
-        headerStackView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 30).isActive = true
-        headerStackView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        headerStackView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
+        self.headerStackView.snp.makeConstraints { (make) in
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).offset(30)
+            make.right.equalTo(self.snp.right).offset(-20)
+            make.left.equalTo(self.snp.left).offset(20)
+            
+        }
         
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-
     }
     
     func setTitleField() {
         self.addSubview(titleField)
-        titleField.translatesAutoresizingMaskIntoConstraints = false
-        titleField.topAnchor.constraint(equalTo: headerStackView.bottomAnchor, constant: 20).isActive = true
-        titleField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        titleField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        titleField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1).isActive = true
-    }
-    
-    func setTipField() {
-        self.addSubview(tipField)
-        tipField.translatesAutoresizingMaskIntoConstraints = false
-        tipField.topAnchor.constraint(equalTo: titleField.bottomAnchor, constant: 20).isActive = true
-        tipField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        tipField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        tipField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.2).isActive = true
-
-    }
-    
-    func setLargeField() {
-        self.addSubview(largeField)
-        largeField.translatesAutoresizingMaskIntoConstraints = false
-        largeField.topAnchor.constraint(equalTo: tipField.bottomAnchor, constant: 20).isActive = true
-        largeField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -20).isActive = true
-        largeField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20).isActive = true
-        largeField.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3).isActive = true
-
+        self.titleField.snp.makeConstraints { (make) in
+            make.top.equalTo(headerStackView.snp.bottom).offset(20)
+            make.trailing.equalTo(self.snp.trailing).offset(-20)
+            make.leading.equalTo(self.snp.leading).offset(20)
+            make.height.equalTo(self.snp.height).multipliedBy(0.1)
+        }
+        
     }
     
     

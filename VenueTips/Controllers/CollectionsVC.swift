@@ -13,7 +13,7 @@ class CollectionsVC: UIViewController {
     let collectionsView = CollectionsView()
     let cellSpacing: CGFloat = 1.0
     let edgeSpacing: CGFloat = 10.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionsView)
@@ -23,13 +23,18 @@ class CollectionsVC: UIViewController {
         collectionsView.collectionView.dataSource = self
         
         navigationItem.title = "Collections"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "+", style: .done, target: self, action: #selector(nextViewController))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus"), style: .plain, target: self, action: #selector(nextViewController))
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        collectionsView.collectionView.reloadData()
     }
     
     @objc func nextViewController() {
+        
         present(CreationVC(), animated: true, completion: nil)
     }
-
+    
 }
 
 extension CollectionsVC: UICollectionViewDelegateFlowLayout {
@@ -55,16 +60,34 @@ extension CollectionsVC: UICollectionViewDelegateFlowLayout {
 
 extension CollectionsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return PersistantManager.manager.getCollections().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionsCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "otherVenueCell", for: indexPath) as! OtherVenueCell
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 10
+        let names = PersistantManager.manager.getCollections()
+        cell.textLabel.text = names[indexPath.row]
+        
+        //TODO: cell's image
+        
+        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil, !PersistantManager.manager.getVenues()[names[indexPath.row]]!.isEmpty else { return cell }
+        
+        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!
+        
+        cell.imageView.image = PersistantManager.manager.getImage(venue: lastAddedVenue)
         return cell
     }
-    
-    
+}
+
+extension CollectionsVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // TODO: selecte cell to present detailVC
+        let selectedTitle = PersistantManager.manager.getCollections()[indexPath.row]
+        let vc = CollecionsListsVC(collectionTitle: selectedTitle)
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 }
 

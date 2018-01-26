@@ -22,16 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let collectionsVC = CollectionsVC()
         
         let searchNav = UINavigationController(rootViewController: searchVC)
-        searchNav.tabBarItem = UITabBarItem(title: "Search", image: nil, selectedImage: nil)
+        searchNav.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         
         let collectionNav = UINavigationController(rootViewController: collectionsVC)
-        collectionNav.tabBarItem = UITabBarItem(title: "Collections", image: nil, selectedImage: nil)
+        collectionNav.tabBarItem = UITabBarItem(title: "Collections", image: #imageLiteral(resourceName: "collectionsIcon"), selectedImage: nil)
+        
         
         tbc.viewControllers = [searchNav, collectionNav]
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = tbc
         window?.makeKeyAndVisible()
+        PersistantManager.manager.loadCollections()
+        PersistantManager.manager.load()
         return true
     }
 
