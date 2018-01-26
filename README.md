@@ -11,21 +11,27 @@ Iram | Masai | Nicole | XianXian
 
 Trello: https://trello.com/b/bHwSih0g/venuetips
 
-## Overview 
+## App Overview 
 
-Use MapKit and CoreLocation to build out a Foursquare like app with the following spcecifications:
-* User can search for a venue
-* The app shows results those results with annotations on a map
-* The user can toggle between a map view and a list view
-* If the user denies access to location, search still works
-* User can create a collection 
-* User can add venues to a collection 
+1. Use FourSquare API to access venues
+    * User can search by location 
+    * User can search by query e.g Coffee 
+2. Integrate MapKit to show live updates on map based on search results 
+    * Annotations update on map
+    * Details about the venue on Annotations 
+    * Directions to selected venue using apple maps
+3. Use CoreLocation to track user's Location 
+    * Authorization to allow location services 
+4. Display detailed information about certain venues 
+    * Images of venues
+    * Directions to venue 
+5. Custom Venue Collections
+    * Users can create collections of certain venues
+    * Users can add any venue to existing collections or make a new collection 
+6. Leave tips for venues 
+    * Users can create little messages and have them saved for that venue. 
 
-* Each group member is responsible for Github commits to this project 
-* Use Github and ```branch-group-membername``` in development
-* When your group is ready to commit to master merge your changes to the ```master``` branch 
-* We will be observing your commits when grading so use best practices when writing commits 
-* Use animations in you app (refer to the [Human Interface guidlines](https://developer.apple.com/ios/human-interface-guidelines/visual-design/animation/))  
+
 
 
 
