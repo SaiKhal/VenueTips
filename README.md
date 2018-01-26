@@ -34,16 +34,24 @@ Trello: https://trello.com/b/bHwSih0g/venuetips
 
 
 
+## Design Patterns 
 
-## Groupwork
+Some of the design patterns we decided to use to model our app. 
 
-[Groups](https://docs.google.com/spreadsheets/d/1Yn8gLFB6hr33EoBptPgqBqvehTi8C12BKz22GfJ25_Q/edit?ts=5a59316f#gid=0)
+1. Dependency Injection. Certain views require properties in order to configure. In the code below, our view requires a Venue and Photo object in order to configure. 
 
-This is our first group project.  There are three large things to be aware of for group projects:
+```swift
+ init(venue: Venue?, photo: UIImage?) {
+        self.venue = venue
+        self.photo = photo
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Not using coder!")
+    }  
+```
 
-1. Git
-2. Trello
-3. Group Roles
 
 ### Git
 
