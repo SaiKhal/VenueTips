@@ -75,21 +75,16 @@ class TipCreationVC: UIViewController {
             return
         }
         newTitle = creationView.textField.text!
-//        self.dismiss(animated: true, completion: nil)
+        showSavedCollectionAlert()
+        creationView.textField.text = ""
+        creationView.customView.collectionView.reloadData()
+        
     }
     // dismiss VC
     @objc func dismissModalVC() {
         self.dismiss(animated: true, completion: nil)
     }
-    // add tip with selected venue
-    //    @objc func addTip() {
-    //        guard creationView.textView.text != nil, creationView.textView.text != "" else {
-    //            showTipAlert()
-    //            return
-    //        }
-    //        self.newTip = creationView.textView.text
-    //
-    //    }
+    
     func showSavedAlert() {
         let alert = UIAlertController(title: "Saved to collection", message: "The new venue has been saved to collections ", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -104,6 +99,12 @@ class TipCreationVC: UIViewController {
     }
     func showAlert() {
         let alert = UIAlertController(title: "Please enter a name", message: "Please enter a name for your new venue collection. ", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    func showSavedCollectionAlert() {
+        let alert = UIAlertController(title: "Added new collection", message: "The new collection has been saved to collections ", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
@@ -149,7 +150,7 @@ extension TipCreationVC: UICollectionViewDataSource {
         
         //cell.addButton.addTarget(self, action: #selector(addTip), for: .touchUpInside)
         
-        cell.imageView.image = self.image
+        
         guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil, !PersistantManager.manager.getVenues()[names[indexPath.row]]!.isEmpty else { return cell }
         
         let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!
@@ -186,5 +187,4 @@ extension TipCreationVC: UICollectionViewDelegateFlowLayout {
         return cellSpacing
     }
 }
-
 
