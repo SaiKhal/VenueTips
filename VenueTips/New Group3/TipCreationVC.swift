@@ -28,7 +28,7 @@ class TipCreationVC: UIViewController {
         didSet {
             print("add newTitle: \(newTitle)")
             // Add new cell to the main collections
-            PersistantManager.Manager.addNewCollection(newName: newTitle)
+            PersistantManager.Manager.addNewCollection(newName: newTitle ?? "NO title here")
         
         }
     }
@@ -44,9 +44,9 @@ class TipCreationVC: UIViewController {
         
     
     init(venue: Venue, image: UIImage) {
-        super.init(nibName: nil, bundle: nil)
         self.venue = venue
         self.image = image
+        super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("fatal error: fail to initialize TipCreationVC")
@@ -181,24 +181,25 @@ extension TipCreationVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TipCreationVC: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PersistantManager.Manager.getCollections().count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "venueCellWithAdd", for: indexPath) as! VenueCellWithAdd
-        cell.backgroundColor = .white
-        cell.layer.cornerRadius = 10
-        let names = PersistantManager.Manager.getCollections()
-        cell.textLabel.text = names[indexPath.row]
-        
-        //TODO: cell's image
-        let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
-        
-        cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
-        return cell
-    }
-    
-    
-}
+//extension TipCreationVC: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return PersistantManager.Manager.getCollections().count
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "venueCellWithAdd", for: indexPath) as! VenueCellWithAdd
+//        cell.backgroundColor = .white
+//        cell.layer.cornerRadius = 10
+//        let names = PersistantManager.Manager.getCollections()
+//        cell.textLabel.text = names[indexPath.row]
+//
+//        //TODO: cell's image
+//        let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
+//
+//        cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
+//        return cell
+//    }
+//
+//
+//}
+
