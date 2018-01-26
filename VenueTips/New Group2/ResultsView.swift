@@ -27,6 +27,7 @@ class ResultsView: UIView {
     
     lazy var tableView: UITableView = {
         let tv = UITableView()
+        tv.register(ResultsCell.self, forCellReuseIdentifier: "ResultsCell")
         return tv
     }()
     

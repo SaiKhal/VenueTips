@@ -20,7 +20,7 @@ class PersistantManager {
         }
     }
     
-    private var venues = [String: [(Venue, String?)]]() {
+    private var venues = [String: [(Venue)]]() {
         didSet {
             saveVenues()
         }
@@ -36,6 +36,7 @@ class PersistantManager {
     // add new name to collectionNames
     func addNewCollection(newName: String) {
         collectionNames.append(newName)
+        venues[newName] = []
     }
     // get collections
     func getCollections() -> [String] {
@@ -47,6 +48,10 @@ class PersistantManager {
         do {
             let data = try PropertyListEncoder().encode(collectionNames)
             try data.write(to: urlPath)
+            
+            print("===========collections==================\n")
+            print(urlPath)
+            print("=======================================")
         } catch {
             print("encoding collections error: \(error)")
         }
@@ -69,7 +74,7 @@ class PersistantManager {
         let urlPath = dataFilePath(of: kPath)
         do {
             let data = try Data(contentsOf: urlPath)
-            venues = try PropertyListDecoder().decode([String: [(Venue, String?)]].self, from: data)
+            venues = try PropertyListDecoder().decode([String: [Venue]].self, from: data)
         } catch {
             print("Decoding data error: \(error)")
         }
@@ -78,8 +83,12 @@ class PersistantManager {
     func saveVenues() {
         let urlPath = dataFilePath(of: kPath)
         do {
-     let data = try PropertyListEncoder().encode(venues)
-       try data.write(to: urlPath)
+            let data = try PropertyListEncoder().encode(venues)
+            try data.write(to: urlPath)
+            
+            print("=============================\n")
+            print(urlPath)
+            print("=============================")
         } catch {
             print("encoding data error: \(error)")
         }
@@ -88,7 +97,7 @@ class PersistantManager {
     func getImage(venue: Venue) -> UIImage? {
         let imageUrl = dataFilePath(of: venue.id)
         do {
-        let data =  try Data(contentsOf: imageUrl)
+            let data =  try Data(contentsOf: imageUrl)
             let image = UIImage(data: data)
             return image
         } catch {
@@ -97,20 +106,23 @@ class PersistantManager {
         return nil
     }
     // get venues
-    func getVenues() -> [String: [(Venue, String?)]]{
+    func getVenues() -> [String: [Venue]]{
         return venues
     }
     // add venues, save image to file
     func addVenue(newVenue: Venue, and newImage: UIImage, collectionName: String, tip: String?) {
         // check venue already saved or not
-        let index = venues[collectionName]?.index(where: {newVenue.id == $0.0.id})
+        let index = venues[collectionName]?.index(where: {newVenue.id == $0.id})
         if index != nil { return }
-        self.venues[collectionName]?.append((newVenue, tip))
+        
+        var venueToAdd = newVenue
+        venueToAdd.tip = tip
+        self.venues[collectionName]!.append(venueToAdd)
         
         let imageUrl = dataFilePath(of: newVenue.id)
         if let imageData = UIImagePNGRepresentation(newImage) {
             do {
-           try imageData.write(to: imageUrl)
+                try imageData.write(to: imageUrl)
             } catch {
                 print("Saving image error: \(error)")
             }

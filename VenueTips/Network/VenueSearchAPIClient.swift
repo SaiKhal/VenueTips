@@ -57,10 +57,10 @@ class VenueSearchAPIClientWithAlamo {
         return venueEndpoint!
     }
     
-    func searchEndpointWithUserLocation(_ coord: CLLocationCoordinate2D) -> String {
+    func searchEndpointWithUserLocation(_ coord: Coordinate) -> String {
         var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
         endpoint?.queryItems = [
-            URLQueryItem(name: "ll", value: "\(coord.latitude),\(coord.longitude)"),
+            URLQueryItem(name: "ll", value: "\(coord.lat),\(coord.lng)"),
             URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
             URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
             URLQueryItem(name: "v", value: "20180117") //ENDPOINT USES CURRENT DAYS DATE?

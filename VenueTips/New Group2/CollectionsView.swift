@@ -27,7 +27,7 @@ class CollectionsView: UIView {
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
 
-        cv.backgroundColor = .purple
+        cv.backgroundColor = UIColor.lightGray
         cv.register(OtherVenueCell.self, forCellWithReuseIdentifier: "otherVenueCell")
         return cv
     }()

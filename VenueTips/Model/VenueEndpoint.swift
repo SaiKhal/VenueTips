@@ -11,6 +11,6 @@ import CoreLocation
 
 struct VenueEndpoint {
     let query, locationName: String?
-    let userLocation: CLLocationCoordinate2D?
+    var userLocation: Coordinate?
     let currentDate: String?
 }

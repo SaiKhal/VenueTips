@@ -99,7 +99,7 @@ class SearchView: UIView {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview()
             make.height.equalToSuperview().dividedBy(5)
-            make.bottom.equalTo(mapView.snp.bottom).offset(-50)
+            make.bottom.equalTo(self.safeAreaLayoutGuide.snp.bottom).offset(-20)
             
             
         }

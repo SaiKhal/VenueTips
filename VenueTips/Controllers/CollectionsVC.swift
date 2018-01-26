@@ -10,12 +10,10 @@ import UIKit
 
 class CollectionsVC: UIViewController {
     
-   
-    
     let collectionsView = CollectionsView()
     let cellSpacing: CGFloat = 1.0
     let edgeSpacing: CGFloat = 10.0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionsView)
@@ -36,7 +34,7 @@ class CollectionsVC: UIViewController {
         
         present(CreationVC(), animated: true, completion: nil)
     }
-
+    
 }
 
 extension CollectionsVC: UICollectionViewDelegateFlowLayout {
@@ -74,8 +72,9 @@ extension CollectionsVC: UICollectionViewDataSource {
         
         //TODO: cell's image
         
-        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
-        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!.0
+        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil, !PersistantManager.manager.getVenues()[names[indexPath.row]]!.isEmpty else { return cell }
+        
+        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!
         
         cell.imageView.image = PersistantManager.manager.getImage(venue: lastAddedVenue)
         return cell
@@ -85,6 +84,9 @@ extension CollectionsVC: UICollectionViewDataSource {
 extension CollectionsVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // TODO: selecte cell to present detailVC
+        let selectedTitle = PersistantManager.manager.getCollections()[indexPath.row]
+        let vc = CollecionsListsVC(collectionTitle: selectedTitle)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 }
