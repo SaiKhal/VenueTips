@@ -15,4 +15,5 @@ enum AppError: Error {
     case cannotParseJSON(rawError: Error)
     case noInternet
     case other(rawError: Error)
+    case invalidImage
 }

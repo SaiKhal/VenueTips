@@ -10,7 +10,7 @@ import Foundation
 
 struct VenuePhotoResults: Codable {
     let meta: Meta
-    let notifications: [Notification]
+    let notifications: [Notification]?
     let response: PhotoResponse
 }
 
@@ -75,8 +75,8 @@ struct Tip: Codable {
     let id: String
     let createdAt: Int
     let text, type, canonicalURL: String
-    let likes: Likes
-    let like, logView: Bool
+    let likes: Likes?
+    let like, logView: Bool?
     let agreeCount, disagreeCount: Int
     let todo: Todo
     

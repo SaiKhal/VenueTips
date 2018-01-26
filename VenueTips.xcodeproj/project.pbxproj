@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A3440A7D1B9C6012FF62279 /* Pods_VenueTipsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B317728A46A576512030552E /* Pods_VenueTipsUITests.framework */; };
+		2A91CF2D884A64477166052E /* Pods_VenueTipsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C50FB6713DF1055AB074392 /* Pods_VenueTipsTests.framework */; };
+		8170CB2820197865009E5DBC /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8170CB2720197865009E5DBC /* LocationHelper.swift */; };
+		8170CB2A201978A7009E5DBC /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8170CB29201978A7009E5DBC /* UserDefaultsHelper.swift */; };
 		8186883820166050003761A0 /* OtherVenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8186883720166050003761A0 /* OtherVenueCell.swift */; };
 		81C665E72017CAE20046A874 /* PersistantManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665E62017CAE20046A874 /* PersistantManager.swift */; };
 		81C665ED2017E3C20046A874 /* VenueCellWithAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */; };
 		81C665EF2018021A0046A874 /* TipCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665EE2018021A0046A874 /* TipCreationVC.swift */; };
 		81C665F1201808020046A874 /* OtherCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665F0201808020046A874 /* OtherCreationView.swift */; };
-		2A3440A7D1B9C6012FF62279 /* Pods_VenueTipsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B317728A46A576512030552E /* Pods_VenueTipsUITests.framework */; };
-		2A91CF2D884A64477166052E /* Pods_VenueTipsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C50FB6713DF1055AB074392 /* Pods_VenueTipsTests.framework */; };
 		81F1A0BE2016714300CF31F1 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F1A0BD2016714300CF31F1 /* VenueCell.swift */; };
 		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
 		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
@@ -57,17 +59,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		8186883720166050003761A0 /* OtherVenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVenueCell.swift; sourceTree = "<group>"; };
-		81C665E62017CAE20046A874 /* PersistantManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
-		81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCellWithAdd.swift; sourceTree = "<group>"; };
-		81C665EE2018021A0046A874 /* TipCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCreationVC.swift; sourceTree = "<group>"; };
-		81C665F0201808020046A874 /* OtherCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCreationView.swift; sourceTree = "<group>"; };
 		0A071BBFFB85AED93375A92E /* Pods-VenueTipsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTipsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTipsTests/Pods-VenueTipsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2C50FB6713DF1055AB074392 /* Pods_VenueTipsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VenueTipsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32C3011E54EA00B60DB7B00D /* Pods-VenueTips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTips.release.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTips/Pods-VenueTips.release.xcconfig"; sourceTree = "<group>"; };
 		3DEF25716958C5CB26240013 /* Pods-VenueTips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTips.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTips/Pods-VenueTips.debug.xcconfig"; sourceTree = "<group>"; };
 		43584A9267190494950174CF /* Pods-VenueTipsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTipsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTipsTests/Pods-VenueTipsTests.release.xcconfig"; sourceTree = "<group>"; };
 		5C0726A627D967BB38A68445 /* Pods-VenueTipsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTipsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTipsUITests/Pods-VenueTipsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8170CB2720197865009E5DBC /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		8170CB29201978A7009E5DBC /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		8186883720166050003761A0 /* OtherVenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherVenueCell.swift; sourceTree = "<group>"; };
+		81C665E62017CAE20046A874 /* PersistantManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistantManager.swift; sourceTree = "<group>"; };
+		81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCellWithAdd.swift; sourceTree = "<group>"; };
+		81C665EE2018021A0046A874 /* TipCreationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipCreationVC.swift; sourceTree = "<group>"; };
+		81C665F0201808020046A874 /* OtherCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherCreationView.swift; sourceTree = "<group>"; };
 		81F1A0BD2016714300CF31F1 /* VenueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueCell.swift; sourceTree = "<group>"; };
 		9309BDA032557F7F6BC81A14 /* Pods-VenueTipsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTipsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTipsUITests/Pods-VenueTipsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F68042EC5942E62B47FC1C /* Pods_VenueTips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VenueTips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,7 @@
 			children = (
 				C42D5DA5200FCBDD007D76C5 /* AppError.swift */,
 				C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */,
+				8170CB2720197865009E5DBC /* LocationHelper.swift */,
 				C484AEEF20112F6B0019CFD3 /* VenuePhotoAPIClient.swift */,
 				C484AEE8201125920019CFD3 /* VenueSearchAPIClient.swift */,
 				C484AEEA201127580019CFD3 /* ImageDownloader.swift */,
@@ -157,6 +162,7 @@
 				C484AEE52011255F0019CFD3 /* VenueResults.swift */,
 				C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */,
 				81C665E62017CAE20046A874 /* PersistantManager.swift */,
+				8170CB29201978A7009E5DBC /* UserDefaultsHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -164,7 +170,6 @@
 		C484AEEE20112CB70019CFD3 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				C484AEEC20112C0C0019CFD3 /* VenueCell.swift */,
 				8186883720166050003761A0 /* OtherVenueCell.swift */,
 				81C665EC2017E3C20046A874 /* VenueCellWithAdd.swift */,
 			);
@@ -570,10 +575,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8170CB2820197865009E5DBC /* LocationHelper.swift in Sources */,
 				C4AB3214200EA92A0044137B /* SearchVC.swift in Sources */,
 				C484AEEB201127580019CFD3 /* ImageDownloader.swift in Sources */,
 				C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */,
 				C4AB3223200FB1390044137B /* ResultsView.swift in Sources */,
+				8170CB2A201978A7009E5DBC /* UserDefaultsHelper.swift in Sources */,
 				C4AB321D200EF1B40044137B /* MainCustomSearchBar.swift in Sources */,
 				81C665F1201808020046A874 /* OtherCreationView.swift in Sources */,
 				81C665EF2018021A0046A874 /* TipCreationVC.swift in Sources */,
@@ -589,7 +596,6 @@
 				C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */,
 				C4AB3221200F00760044137B /* CreationView.swift in Sources */,
 				8186883820166050003761A0 /* OtherVenueCell.swift in Sources */,
-				C484AEED20112C0C0019CFD3 /* VenueCell.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
 				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
 				C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */,

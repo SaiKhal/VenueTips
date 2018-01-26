@@ -10,13 +10,13 @@ import Foundation
 
 struct VenueSearchResults: Codable {
     let meta: Meta
-    let notifications: [Notification]
-    let response: Response
+    let notifications: [Notification]?
+    var response: Response
 }
 
 struct Meta: Codable {
     let code: Int
-    let requestID: String
+    let requestID: String?
     
     enum CodingKeys: String, CodingKey {
         case code
@@ -34,7 +34,7 @@ struct Item: Codable {
 }
 
 struct Response: Codable {
-    let venues: [Venue]
+    var venues: [Venue]
     let confident: Bool?
     let geocode: Geocode
 }
@@ -54,7 +54,8 @@ struct Feature: Codable {
     let cc, name, displayName, matchedName: String
     let highlightedName: String
     let woeType: Int
-    let slug, id, longID: String
+    let id, longID: String
+    let slug: String?
     let geometry: Geometry
     
     enum CodingKeys: String, CodingKey {
@@ -145,7 +146,8 @@ struct Group: Codable {
 struct Location: Codable {
     let lat, lng: Double
     let labeledLatLngs: [LabeledLatLng]?
-    let cc, city, state, country: String
+    let cc, state, country: String
+    let city: String?
     let formattedAddress: [String]
     let postalCode, address, crossStreet, neighborhood: String?
 }
