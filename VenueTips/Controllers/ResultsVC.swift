@@ -51,14 +51,14 @@ class ResultsVC: UIViewController {
 }
 
 extension ResultsVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedCell = tableView.cellForRow(at: indexPath) as! VenueCell
-        let venue = searchResults?.response.venues?[indexPath.row]
-        let image = selectedCell.venueImageView.image
-        
-        let detailVC = VenueDetailVC(venue: venue, photo: image)
-        navigationController?.pushViewController(detailVC, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedCell = tableView.cellForRow(at: indexPath) as! VenueCell
+//        let venue = searchResults?.response.venues?[indexPath.row]
+//        let image = selectedCell.venueImageView.image
+//
+//        let detailVC = VenueDetailVC(venue: venue, photo: image)
+//        navigationController?.pushViewController(detailVC, animated: true)
+//    }
 }
 
 extension ResultsVC: UITableViewDataSource {
@@ -91,14 +91,11 @@ extension ResultsVC: UITableViewDataSource {
         let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
-            self.searchResults?.response.venues?[index].photoURL = endpoint
-            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
-                cell.imageView?.image = image
-            } else {
-                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
-                                                            completion: {(error, image) in
-                                                                cell.imageView?.image = image; cell.setNeedsLayout()})
-            }
+            let placeholderImage = UIImage(named: "placeholder-image")
+            cell.imageView?.kf.indicatorType = .activity
+            cell.imageView?.kf.setImage(with: URL(string: endpoint)!, placeholder: placeholderImage, completionHandler: { (_, _, _, _) in
+                cell.setNeedsLayout()
+            })
         }
         
         let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
@@ -106,8 +103,6 @@ extension ResultsVC: UITableViewDataSource {
                                                    completionHandler: completion,
                                                    errorHandler: handle)
         cell.textLabel?.text = venue.name
-        
-        
         return cell
     }
     

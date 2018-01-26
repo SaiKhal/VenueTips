@@ -239,20 +239,28 @@ extension SearchVC: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VenueCell", for: indexPath) as! VenueCell
         let index = indexPath.item
         guard let venue = searchResults?.response.venues?[index] else { return cell }
+        let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
+        
+        
         let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
-            self.searchResults?.response.venues?[index].photoURL = endpoint
-            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
-                cell.venueImageView.image = image
-            } else {
-                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
-                                                            completion: {(error, image) in
-                                                                cell.venueImageView.image = image; cell.setNeedsLayout()})
-            }
+            let placeholderImage = UIImage(named: "placeholder-image")
+            cell.venueImageView.kf.indicatorType = .activity
+            cell.venueImageView.kf.setImage(with: URL(string: endpoint)!, placeholder: placeholderImage)
+            
+            
+            
+//            self.searchResults?.response.venues?[index].photoURL = endpoint
+//            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
+//                cell.venueImageView.image = image
+//            } else {
+//                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
+//                                                            completion: {(error, image) in
+//                                                                cell.venueImageView.image = image; cell.setNeedsLayout()})
+//            }
         }
         
-        let photoEndpoint = VenuePhotoAPIClient.manager.photoEndpoint(venue: venue)
         VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
                                                    completionHandler: completion,
                                                    errorHandler: handle)
