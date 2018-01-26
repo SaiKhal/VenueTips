@@ -68,27 +68,13 @@ class CreationView: UIView {
         return tf
     }()
     
-    lazy var tipField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .roundedRect
-        tf.placeholder = "Enter a tip about collection."
-        tf.layer.cornerRadius = 10
-        return tf
-    }()
     
-    lazy var largeField: UITextView = {
-        let tv = UITextView()
-        tv.backgroundColor = .blue
-        //tv.borderStyle = .roundedRect
-        tv.layer.cornerRadius = 10
-        return tv
-    }()
     
     func setupViews() {
         setTitleLabel()
         setHeaderStackView()
         setTitleField()
-        setTipField()
+        
     }
     
     func setTitleLabel() {
@@ -121,15 +107,5 @@ class CreationView: UIView {
         
     }
     
-    func setTipField() {
-        self.addSubview(tipField)
-        self.tipField.snp.makeConstraints { (make) in
-            make.top.equalTo(titleField.snp.bottom).offset(20)
-            make.trailing.equalTo(self.snp.trailing).offset(-20)
-            make.leading.equalTo(self.snp.leading).offset(20)
-            make.height.equalTo(self.snp.height).multipliedBy(0.2)
-        }
-        
-    }
     
 }

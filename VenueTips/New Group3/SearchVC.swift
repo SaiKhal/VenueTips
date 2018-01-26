@@ -12,14 +12,13 @@ import CoreLocation
 import MapKit
 import Kingfisher
 
-struct VenueWithImages {
-    let venue: Venue
-    let imageURL: String
+struct Coordinate {
+    var lat = 0.00
+    var lng = 0.00
 }
 
 class SearchVC: UIViewController {
     
-    var venuesWithImages = [VenueWithImages]()
     let searchView = SearchView()
     var currentSelectedVenue: VenueSearchResults!
     private var annotations = [MKAnnotation]()
@@ -49,7 +48,7 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setContentView()
+        setSearchView()
         setNavBar()
         askForUserPermission()
     }
@@ -62,7 +61,7 @@ class SearchVC: UIViewController {
         switch result.meta.code {
         // SUCCESS
         case 200:
-//            self.searchResults?.response.venues?.removeAll()
+            //            self.searchResults?.response.venues?.removeAll()
             self.searchView.mapView.removeAnnotations(self.annotations)
             self.annotations.removeAll()
             self.searchResults = result
@@ -90,7 +89,7 @@ class SearchVC: UIViewController {
         }
     }
     
-    private func setContentView() {
+    private func setSearchView() {
         view.addSubview(searchView)
         searchView.topAnchor.constraint(equalTo: topLayoutGuide.topAnchor).isActive = true
         searchView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.bottomAnchor).isActive = true
@@ -161,12 +160,12 @@ extension SearchVC: MKMapViewDelegate {
     //        }
     
     //Mark: - sending to which VC
-        func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//          TODO
-            
-//            let detailVC = VenueDetailVC(venue: <#T##Venue?#>, photo: <#T##UIImage?#>)
-//            navigationController?.pushViewController(detailVC, animated: true)
-        }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        //          TODO
+        
+        //            let detailVC = VenueDetailVC(venue: <#T##Venue?#>, photo: <#T##UIImage?#>)
+        //            navigationController?.pushViewController(detailVC, animated: true)
+    }
     
     
 }
@@ -184,13 +183,7 @@ extension SearchVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         var venue: String?
         var locationName: String?
-        var userLocation: CLLocationCoordinate2D?
-        
-        //        if CLLocationManager.locationServicesEnabled() {
-        //
-        //        } else {
-        //
-        //        }
+        var userLocation = Coordinate()
         
         if (searchView.venueSearchBar.text?.isEmpty)! {
             self.searchView.mapView.dodo.style.bar.hideAfterDelaySeconds = 3
@@ -200,14 +193,35 @@ extension SearchVC: UISearchBarDelegate {
             venue = searchView.venueSearchBar.text
         }
         
-        if (searchView.locationSearchBar.text?.isEmpty)! {
-            locationName = "Queens, NY"
-        } else {
-            locationName = searchView.locationSearchBar.text
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedAlways, .authorizedWhenInUse:
+            userLocation.lat = UserDefaultsHelper.manager.getLatitude()
+            userLocation.lng = UserDefaultsHelper.manager.getLongitude()
+            let venueEndpoint = VenueEndpoint(query: venue, locationName: nil, userLocation: userLocation, currentDate: nil)
+            VenueSearchAPIClientWithAlamo.manager.getSearchResults(from: venueEndpoint, completionHandler: completion, errorHandler: handle)
+        default:
+            if (searchView.locationSearchBar.text?.isEmpty)! {
+                locationName = "Queens, NY"
+            } else {
+                locationName = searchView.locationSearchBar.text
+            }
+            let venueEndpoint = VenueEndpoint(query: venue, locationName: locationName, userLocation: nil, currentDate: nil)
+            
+            VenueSearchAPIClientWithAlamo.manager.getSearchResults(from: venueEndpoint, completionHandler: completion, errorHandler: handle)
         }
         
-        let venueEndpoint = VenueEndpoint(query: venue, locationName: locationName, userLocation: nil, currentDate: nil)
-        VenueSearchAPIClientWithAlamo.manager.getSearchResults(from: venueEndpoint, completionHandler: completion, errorHandler: handle)
+//        if CLLocationManager.locationServicesEnabled() {
+//
+//        } else {
+//
+//        }
+        
+        
+        
+        
+        
+        
+        
         
         
     }
@@ -251,14 +265,14 @@ extension SearchVC: UICollectionViewDataSource {
             
             
             
-//            self.searchResults?.response.venues?[index].photoURL = endpoint
-//            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
-//                cell.venueImageView.image = image
-//            } else {
-//                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
-//                                                            completion: {(error, image) in
-//                                                                cell.venueImageView.image = image; cell.setNeedsLayout()})
-//            }
+            //            self.searchResults?.response.venues?[index].photoURL = endpoint
+            //            if let image = ImageCache.manager.cachedImage(url: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!) {
+            //                cell.venueImageView.image = image
+            //            } else {
+            //                ImageCache.manager.processImageInBackground(imageURL: URL(string: (self.searchResults?.response.venues?[index].photoURL!)!)!,
+            //                                                            completion: {(error, image) in
+            //                                                                cell.venueImageView.image = image; cell.setNeedsLayout()})
+            //            }
         }
         
         VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,

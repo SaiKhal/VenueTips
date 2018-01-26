@@ -11,7 +11,7 @@ import UIKit
 class OtherVenueCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let img = UIImageView()
-        img.contentMode = .scaleAspectFit
+        img.contentMode = .scaleToFill
         img.backgroundColor = .cyan
         return img
     }()

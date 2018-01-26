@@ -14,7 +14,7 @@ class VenueCell: UICollectionViewCell {
     
     lazy var venueImageView: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
+        iv.contentMode = .scaleToFill
         iv.image = #imageLiteral(resourceName: "placeholder-image")
         return iv
     }()
@@ -33,6 +33,8 @@ class VenueCell: UICollectionViewCell {
     
     private func commonInit() {
         backgroundColor = .white
+        self.layer.cornerRadius = 8.0
+        self.layer.masksToBounds = true
         setupViews()
     }
     

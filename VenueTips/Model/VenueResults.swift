@@ -98,6 +98,7 @@ struct Venue: Codable {
     let menu: Menu?
     let hasMenu: Bool?
     var photoURL: String?
+    var tip: String?
     
     enum CodingKeys: String, CodingKey {
         case id, name, contact, location, categories, verified, stats
@@ -106,7 +107,7 @@ struct Venue: Codable {
         case referralID = "referralId"
         case venueChains, hasPerk, venueRatingBlacklisted
         case storeID = "storeId"
-        case url, menu, hasMenu, photoURL
+        case url, menu, hasMenu, photoURL, tip
     }
 }
 

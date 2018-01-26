@@ -27,7 +27,6 @@ class CreationVC: UIViewController {
         creationView.creationButton.addTarget(self, action: #selector(create), for: .touchUpInside)
         
         creationView.titleField.delegate = self
-        creationView.tipField.delegate = self
     }
     
     @objc func create() {

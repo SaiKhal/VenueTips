@@ -30,7 +30,7 @@ class TipCreationVC: UIViewController {
             print("add newTitle: \(newTitle)")
             // Add new cell to the main collections
             PersistantManager.manager.addNewCollection(newName: newTitle ?? "NO title here")
-        
+            
         }
     }
     var selectedTitle: String! {
@@ -42,7 +42,7 @@ class TipCreationVC: UIViewController {
             self.newTip = creationView.textView.text
         }
     }
-        
+    
     
     init(venue: Venue, image: UIImage) {
         self.venue = venue
@@ -61,7 +61,7 @@ class TipCreationVC: UIViewController {
         creationView.creationButton.addTarget(self, action: #selector(create), for: .touchUpInside)
         
         creationView.textField.delegate = self
-     
+        creationView.textView.delegate = self
         creationView.customView.collectionView.delegate = self
         creationView.customView.collectionView.dataSource = self
         
@@ -82,14 +82,14 @@ class TipCreationVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     // add tip with selected venue
-//    @objc func addTip() {
-//        guard creationView.textView.text != nil, creationView.textView.text != "" else {
-//            showTipAlert()
-//            return
-//        }
-//        self.newTip = creationView.textView.text
-//
-//    }
+    //    @objc func addTip() {
+    //        guard creationView.textView.text != nil, creationView.textView.text != "" else {
+    //            showTipAlert()
+    //            return
+    //        }
+    //        self.newTip = creationView.textView.text
+    //
+    //    }
     func showSavedAlert() {
         let alert = UIAlertController(title: "Saved to collection", message: "The new venue has been saved to collections ", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -122,7 +122,16 @@ extension TipCreationVC: UITextFieldDelegate {
     }
 }
 
-
+extension TipCreationVC: UITextViewDelegate {
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+}
 
 //TODO: handle the collectionView
 extension TipCreationVC: UICollectionViewDataSource {
@@ -141,8 +150,9 @@ extension TipCreationVC: UICollectionViewDataSource {
         //cell.addButton.addTarget(self, action: #selector(addTip), for: .touchUpInside)
         
         cell.imageView.image = self.image
-        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
-        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!.0
+        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil, !PersistantManager.manager.getVenues()[names[indexPath.row]]!.isEmpty else { return cell }
+        
+        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!
         
         cell.imageView.image = PersistantManager.manager.getImage(venue: lastAddedVenue)
         return cell
@@ -176,3 +186,5 @@ extension TipCreationVC: UICollectionViewDelegateFlowLayout {
         return cellSpacing
     }
 }
+
+

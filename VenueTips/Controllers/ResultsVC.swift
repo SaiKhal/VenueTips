@@ -51,14 +51,19 @@ class ResultsVC: UIViewController {
 }
 
 extension ResultsVC: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedCell = tableView.cellForRow(at: indexPath) as! VenueCell
-//        let venue = searchResults?.response.venues?[indexPath.row]
-//        let image = selectedCell.venueImageView.image
-//
-//        let detailVC = VenueDetailVC(venue: venue, photo: image)
-//        navigationController?.pushViewController(detailVC, animated: true)
-//    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCell = tableView.cellForRow(at: indexPath) as! ResultsCell
+        let venue = searchResults?.response.venues?[indexPath.row]
+        let image = selectedCell.venueImageView.image
+
+        let detailVC = VenueDetailVC(venue: venue, photo: image)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension ResultsVC: UITableViewDataSource {
@@ -84,17 +89,19 @@ extension ResultsVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResultsCell", for: indexPath) as! ResultsCell
         let index = indexPath.row
         guard let venue = searchResults?.response.venues?[index] else { return cell }
         
-        let completion: (VenuePhotoResults) -> Void = { [unowned self] (results) in
+        let completion: (VenuePhotoResults) -> Void = { (results) in
             guard let photo = results.response.photos.items.first else { return }
             let endpoint = "\(photo.purplePrefix)original\(photo.suffix)"
             let placeholderImage = UIImage(named: "placeholder-image")
-            cell.imageView?.kf.indicatorType = .activity
-            cell.imageView?.kf.setImage(with: URL(string: endpoint)!, placeholder: placeholderImage, completionHandler: { (_, _, _, _) in
-                cell.setNeedsLayout()
+            
+            
+            cell.venueImageView.kf.indicatorType = .activity
+            cell.venueImageView.kf.setImage(with: URL(string: endpoint)!, placeholder: placeholderImage, completionHandler: { (_, _, cacheType, _) in
+//                cell.setNeedsLayout()
             })
         }
         
@@ -102,7 +109,8 @@ extension ResultsVC: UITableViewDataSource {
         VenuePhotoAPIClient.manager.getVenuePhotos(from: photoEndpoint,
                                                    completionHandler: completion,
                                                    errorHandler: handle)
-        cell.textLabel?.text = venue.name
+        cell.venueNameLabel.text = venue.name
+        cell.venueAddressLabel.text = venue.location.address ?? "No address"
         return cell
     }
     

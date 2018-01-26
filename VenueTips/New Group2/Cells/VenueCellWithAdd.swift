@@ -8,14 +8,10 @@
 
 import UIKit
 
-//class VenueCellWithAdd: UICollectionViewCell {
-//
-//}
-
 class VenueCellWithAdd: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let img = UIImageView()
-        img.contentMode = .scaleAspectFit
+        img.contentMode = .scaleToFill
         img.backgroundColor = .cyan
         return img
     }()

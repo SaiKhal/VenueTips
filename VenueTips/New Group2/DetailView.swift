@@ -14,14 +14,16 @@ class VenueDetailView: UIView {
     lazy var venueLabel: UILabel = {
         let label = UILabel()
         label.text = "Placeholder text"
-        label.font = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight(rawValue: 200))
-        label.backgroundColor = .red
+        label.font = UIFont.systemFont(ofSize: 30, weight: .medium)
+        label.backgroundColor = UIColor.lightGray
+        label.textColor = .black
+        label.textAlignment = .center
         return label
     }()
     
     lazy var venueImageView: UIImageView = {
         let iv = UIImageView()
-        iv.backgroundColor = .red
+        iv.backgroundColor = UIColor.white
         iv.contentMode = .scaleAspectFit
         return iv
     }()
@@ -29,7 +31,8 @@ class VenueDetailView: UIView {
     lazy var directionButton: UIButton = {
         let bttn = UIButton()
         bttn.setTitle("Get Directions", for: .normal)
-        bttn.backgroundColor = .green
+        bttn.backgroundColor = UIColor.orange
+        //bttn.setTitleColor(UIColor.orange, for: .normal)
         return bttn
     }()
     
@@ -37,7 +40,8 @@ class VenueDetailView: UIView {
         let label = UILabel()
         label.text = "Leave a tip"
         label.font = UIFont.systemFont(ofSize: 20)
-        label.backgroundColor = .red
+        label.backgroundColor = UIColor.lightGray
+        label.textAlignment = .center
         return label
     }()
     
@@ -54,7 +58,7 @@ class VenueDetailView: UIView {
     }
     
     private func commonInit() {
-        backgroundColor = .yellow
+        backgroundColor = .white
         setupViews()
     }
     
@@ -107,3 +111,5 @@ class VenueDetailView: UIView {
     
     
 }
+
+
