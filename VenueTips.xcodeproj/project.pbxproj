@@ -15,9 +15,13 @@
 		81C665EF2018021A0046A874 /* TipCreationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665EE2018021A0046A874 /* TipCreationVC.swift */; };
 		81C665F1201808020046A874 /* OtherCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C665F0201808020046A874 /* OtherCreationView.swift */; };
 		81F1A0BE2016714300CF31F1 /* VenueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F1A0BD2016714300CF31F1 /* VenueCell.swift */; };
-		C4199D16201A3F5E00F746E3 /* DoDoDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D15201A3F5E00F746E3 /* DoDoDistrib.swift */; };
 		C4199D1A201A654500F746E3 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D19201A654500F746E3 /* ImageCache.swift */; };
 		C4199D1C201A791E00F746E3 /* VenueEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D1B201A791E00F746E3 /* VenueEndpoint.swift */; };
+		C4199D20201ABC3900F746E3 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D1F201ABC3900F746E3 /* LocationHelper.swift */; };
+		C4199D23201ABC8900F746E3 /* DoDoDistrib.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D22201ABC8900F746E3 /* DoDoDistrib.swift */; };
+		C4199D25201ABD2200F746E3 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D24201ABD2200F746E3 /* UserDefaultsHelper.swift */; };
+		C4199D27201AD01A00F746E3 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D26201AD01A00F746E3 /* DetailVC.swift */; };
+		C4199D29201AD04200F746E3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4199D28201AD04200F746E3 /* DetailView.swift */; };
 		C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */; };
 		C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42D5DA5200FCBDD007D76C5 /* AppError.swift */; };
 		C484AEE62011255F0019CFD3 /* VenueResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = C484AEE52011255F0019CFD3 /* VenueResults.swift */; };
@@ -75,9 +79,13 @@
 		9309BDA032557F7F6BC81A14 /* Pods-VenueTipsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenueTipsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VenueTipsUITests/Pods-VenueTipsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A6F68042EC5942E62B47FC1C /* Pods_VenueTips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VenueTips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B317728A46A576512030552E /* Pods_VenueTipsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VenueTipsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4199D15201A3F5E00F746E3 /* DoDoDistrib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DoDoDistrib.swift; path = /Users/Masai/Code/C4Q/VenueTips/VenueTips/DoDoDistrib.swift; sourceTree = "<absolute>"; };
 		C4199D19201A654500F746E3 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		C4199D1B201A791E00F746E3 /* VenueEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueEndpoint.swift; sourceTree = "<group>"; };
+		C4199D1F201ABC3900F746E3 /* LocationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocationHelper.swift; path = /Users/Masai/Code/C4Q/VenueTips/VenueTips/Network/LocationHelper.swift; sourceTree = "<absolute>"; };
+		C4199D22201ABC8900F746E3 /* DoDoDistrib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoDoDistrib.swift; sourceTree = "<group>"; };
+		C4199D24201ABD2200F746E3 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		C4199D26201AD01A00F746E3 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		C4199D28201AD04200F746E3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		C42D5DA5200FCBDD007D76C5 /* AppError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		C484AEE52011255F0019CFD3 /* VenueResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VenueResults.swift; sourceTree = "<group>"; };
@@ -145,9 +153,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C4199D21201ABC5500F746E3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C4199D22201ABC8900F746E3 /* DoDoDistrib.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		C42D5DA1200FCB76007D76C5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C4199D1F201ABC3900F746E3 /* LocationHelper.swift */,
 				C4199D19201A654500F746E3 /* ImageCache.swift */,
 				C42D5DA5200FCBDD007D76C5 /* AppError.swift */,
 				C42D5DA4200FCBDD007D76C5 /* NetworkHelper.swift */,
@@ -165,6 +182,7 @@
 				C484AEF120112F8D0019CFD3 /* VenuePhotos.swift */,
 				C4199D1B201A791E00F746E3 /* VenueEndpoint.swift */,
 				81C665E62017CAE20046A874 /* PersistantManager.swift */,
+				C4199D24201ABD2200F746E3 /* UserDefaultsHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -203,8 +221,8 @@
 		C4AB31D7200E9B470044137B /* VenueTips */ = {
 			isa = PBXGroup;
 			children = (
-				C4199D15201A3F5E00F746E3 /* DoDoDistrib.swift */,
 				C4AB31D8200E9B470044137B /* AppDelegate.swift */,
+				C4199D21201ABC5500F746E3 /* Services */,
 				C42D5DA1200FCB76007D76C5 /* Network */,
 				C4AB320D200EA2900044137B /* Views */,
 				C4AB320E200EA2970044137B /* Controllers */,
@@ -237,10 +255,11 @@
 		C4AB320D200EA2900044137B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				81F1A0BD2016714300CF31F1 /* VenueCell.swift */,
 				C4AB3219200EEFA10044137B /* SearchBars */,
 				C484AEEE20112CB70019CFD3 /* Cells */,
+				C4199D28201AD04200F746E3 /* DetailView.swift */,
 				C4AB3211200EA8090044137B /* SearchView.swift */,
+				81F1A0BD2016714300CF31F1 /* VenueCell.swift */,
 				C4AB3222200FB1390044137B /* ResultsView.swift */,
 				C4AB3215200EA9A60044137B /* CollectionsView.swift */,
 				C4AB3220200F00760044137B /* CreationView.swift */,
@@ -253,6 +272,7 @@
 		C4AB320E200EA2970044137B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C4199D26201AD01A00F746E3 /* DetailVC.swift */,
 				C4AB3213200EA92A0044137B /* SearchVC.swift */,
 				C4AB3224200FB1CA0044137B /* ResultsVC.swift */,
 				C4AB321E200EFF520044137B /* CreationVC.swift */,
@@ -591,17 +611,21 @@
 				C4199D1A201A654500F746E3 /* ImageCache.swift in Sources */,
 				C42D5DA6200FCBDD007D76C5 /* NetworkHelper.swift in Sources */,
 				C4AB321F200EFF520044137B /* CreationVC.swift in Sources */,
+				C4199D29201AD04200F746E3 /* DetailView.swift in Sources */,
 				C484AEE9201125920019CFD3 /* VenueSearchAPIClient.swift in Sources */,
+				C4199D25201ABD2200F746E3 /* UserDefaultsHelper.swift in Sources */,
 				C4AB3212200EA8090044137B /* SearchView.swift in Sources */,
+				C4199D23201ABC8900F746E3 /* DoDoDistrib.swift in Sources */,
+				C4199D27201AD01A00F746E3 /* DetailVC.swift in Sources */,
 				C4AB3216200EA9A60044137B /* CollectionsView.swift in Sources */,
 				C42D5DA7200FCBDD007D76C5 /* AppError.swift in Sources */,
 				C484AEF220112F8D0019CFD3 /* VenuePhotos.swift in Sources */,
 				C4199D1C201A791E00F746E3 /* VenueEndpoint.swift in Sources */,
 				C4AB3221200F00760044137B /* CreationView.swift in Sources */,
 				8186883820166050003761A0 /* OtherVenueCell.swift in Sources */,
-				C4199D16201A3F5E00F746E3 /* DoDoDistrib.swift in Sources */,
 				C4AB31D9200E9B470044137B /* AppDelegate.swift in Sources */,
 				C4AB3218200EAACE0044137B /* CollectionsVC.swift in Sources */,
+				C4199D20201ABC3900F746E3 /* LocationHelper.swift in Sources */,
 				C484AEF020112F6B0019CFD3 /* VenuePhotoAPIClient.swift in Sources */,
 				81C665ED2017E3C20046A874 /* VenueCellWithAdd.swift in Sources */,
 			);

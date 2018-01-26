@@ -26,7 +26,8 @@ class CollectionsView: UIView {
         //        layout.sectionInset = UIEdgeInsets(top: 120, left: 20, bottom: 20, right: 20)
         
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .white
+
+        cv.backgroundColor = .purple
         cv.register(OtherVenueCell.self, forCellWithReuseIdentifier: "otherVenueCell")
         return cv
     }()
