@@ -15,7 +15,7 @@ class CreationVC: UIViewController {
         didSet {
             print("add newTitle: \(newTitle)")
             // Add new cell to the main collections
-           PersistantManager.Manager.addNewCollection(newName: newTitle)
+           PersistantManager.manager.addNewCollection(newName: newTitle)
         }
     }
     
