@@ -116,45 +116,28 @@ Some of the design patterns we decided to use to model our app.
     
 ## Gifs
 
-|User Allowing Access|User Denying Location Access|
+
 |:-------------:|:------------:|
-|<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/request-location-access-allow.gif" width="358" height="626">|<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/request-location-access-denied.gif" width="358" height="626">|  
+ 
 
 <br><br>
-<p align="center"><b>User can search for a venue and toggle between the default search map or a list</b></p>
+<p align="center"><b></b></p>
 <p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/search-for-venue.gif" width="358" height="626">
+<img src="https://github.com/SaiKhal/VenueTips/blob/master/VenueTips/2018-01-26%2015.08.41.gif" width="358" height="626">
 </p>
 
 <br><br>
-<p align="center"><b>User can change search location</b></p>
+<p align="center"><b></b></p>
 <p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/change-location.gif" width="358" height="626">
+<img src="https://github.com/SaiKhal/VenueTips/blob/master/VenueTips/2018-01-26%2015.08.25.gif" width="358" height="626">
 </p>
 
 <br><br>
-<p align="center"><b>User can create a collection</b></p>
+<p align="center"><b></b></p>
 <p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/create-collection.gif" width="358" height="626">
+<img src="https://github.com/SaiKhal/VenueTips/blob/master/VenueTips/2018-01-26%2015.09.00.gif" width="358" height="626">
 </p>
 
-<br><br>
-<p align="center"><b>User can add a venue to a collection</b></p>
-<p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/add-to-collection.gif" width="358" height="626">
-</p>
-
-<br><br>
-<p align="center"><b>User can create a tip about a venue</b></p>
-<p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/create-a-tip.gif" width="358" height="626">
-</p>
-
-<br><br>
-<p align="center"><b>User can get directions to a venue</b></p>
-<p align="center">
-<img src="https://github.com/C4Q/AC-iOS-Unit5GroupProject/blob/master/Images/get-directions.gif" width="358" height="626">
-</p>
 
 
 
