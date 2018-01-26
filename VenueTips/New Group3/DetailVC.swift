@@ -63,7 +63,7 @@ class VenueDetailVC: UIViewController {
     }
     
     @objc func addToCollection() {
-        let tipCreationVC = TipCreationVC()
+        let tipCreationVC = TipCreationVC(venue: venue, image: photo)
         tipCreationVC.modalTransitionStyle = .crossDissolve
         tipCreationVC.modalPresentationStyle = .currentContext
         present(tipCreationVC, animated: true, completion: nil)

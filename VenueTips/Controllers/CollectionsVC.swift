@@ -62,22 +62,22 @@ extension CollectionsVC: UICollectionViewDelegateFlowLayout {
 
 extension CollectionsVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PersistantManager.Manager.getCollections().count
+        return PersistantManager.manager.getCollections().count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "otherVenueCell", for: indexPath) as! OtherVenueCell
         cell.backgroundColor = .white
         cell.layer.cornerRadius = 10
-        let names = PersistantManager.Manager.getCollections()
+        let names = PersistantManager.manager.getCollections()
         cell.textLabel.text = names[indexPath.row]
         
         //TODO: cell's image
         
-        guard !PersistantManager.Manager.getCollections().isEmpty, PersistantManager.Manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
-        let lastAddedVenue = PersistantManager.Manager.getVenues()[names[indexPath.row]]!.last!.0
+        guard !PersistantManager.manager.getCollections().isEmpty, PersistantManager.manager.getVenues()[names[indexPath.row]]  != nil else { return cell }
+        let lastAddedVenue = PersistantManager.manager.getVenues()[names[indexPath.row]]!.last!.0
         
-        cell.imageView.image = PersistantManager.Manager.getImage(venue: lastAddedVenue)
+        cell.imageView.image = PersistantManager.manager.getImage(venue: lastAddedVenue)
         return cell
     }
 }
