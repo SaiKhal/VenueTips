@@ -23,20 +23,13 @@ class VenueCellWithAdd: UICollectionViewCell {
            let butt = UIButton()
             butt.setTitle("+", for: .normal)
             butt.setTitleColor(.blue, for: .normal)
-            // TODO: butt.add target to add new venue to the collectionCell
-            butt.addTarget(self, action: #selector(addButtonPress), for: .touchUpInside)
+           
             return butt
         }()
     lazy var textLabel: UILabel = {
         let lab = UILabel()
         return lab
     }()
-    @objc func addButtonPress() {
-//        let alert = UIAlertController(title: "Save to collection", message: "You have save the venue to your collection", preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        alert.addAction(okAction)
-        print("add venue to collection")
-    }
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         commonInit()

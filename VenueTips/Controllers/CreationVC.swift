@@ -32,10 +32,16 @@ class CreationVC: UIViewController {
     
     @objc func create() {
         print("Create collection")
+        guard creationView.textField.text != nil, creationView.textField.text != "" else {
+            showAlert()
+            return
+        }
+        newTitle = creationView.textField.text!
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func dismissModalVC() {
+   
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -49,12 +55,12 @@ class CreationVC: UIViewController {
 }
 extension CreationVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard textField.text != nil, textField.text != "" else {
-            showAlert()
-            return false
-        }
+//        guard textField.text != nil, textField.text != "" else {
+//            showAlert()
+//            return false
+//        }
         textField.resignFirstResponder()
-        self.newTitle = textField.text
+       // self.newTitle = textField.text
         return true
     }
     
