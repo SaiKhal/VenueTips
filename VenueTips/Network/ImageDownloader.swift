@@ -14,13 +14,19 @@ struct ImageDownloader {
     func getImage(from urlStr: String, completionHandler: @escaping (UIImage) -> Void, errorHandler: (Error) -> Void) {
         // MARK: - Downloads images async
         if let albumURL = URL(string: urlStr) {
+            // attempt to fetch cached image
+            if let cachedImage = ImageCache.manager.cachedImage(url: albumURL) {
+                print("Using cache")
+                completionHandler(cachedImage)
+                return
+            }
             // doing work on a background thread
             DispatchQueue.global().async {
                 if let data = try? Data.init(contentsOf: albumURL) {
                     if let image = UIImage(data: data) {
-                    // go back to main thread to update UI
-                    DispatchQueue.main.async {
-                        completionHandler(image)
+                        // go back to main thread to update UI
+                        DispatchQueue.main.async {
+                            completionHandler(image)
                         }
                     }
                 }

@@ -8,56 +8,28 @@
 
 import Foundation
 import Alamofire
+import CoreLocation
 
-struct VenueSearchAPIClient {
-    private init() {}
-    static let manager = VenueSearchAPIClient()
-    
-    func getSearchResults(from urlStr: String, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: (Error) -> Void) {
-        guard let url = URL(string: urlStr) else {return}
-        
-        //        if let cachedImage = ImageCache.manager.getImage(urlStr: urlStr) {
-        //            completionHandler(cachedImage)
-        //            return
-        //        }
-        
-        let completion: (Data) -> Void = {(data: Data) in
-            do {
-                let results = try JSONDecoder().decode(VenueSearchResults.self, from: data)
-                completionHandler(results)
-            }
-            catch {
-                print(error)
-            }
-        }
-        NetworkHelper.manager.performDataTask(with: URLRequest(url: url),
-                                              completionHandler: completion,
-                                              errorHandler: {print($0)})
-    }
-    
-    func searchEndpointWithNear(near: String, query: String) -> String {
-        var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
-        endpoint?.queryItems = [
-            URLQueryItem(name: "near", value: near),
-            URLQueryItem(name: "oauth_token", value: "BAKSUNZT0PTGTTLTWFGGXDGYLGKFBRCPZFU1EA4221TM1DIM"),
-            URLQueryItem(name: "v", value: "20180117"), //ENDPOINT USES CURRENT DAYS DATE?
-            URLQueryItem(name: "query", value: query)
-        ]
-        let venueEndpoint = endpoint?.url?.absoluteString
-        return venueEndpoint!
-    }
-}
-
-struct VenueSearchAPIClientWithAlamo {
+class VenueSearchAPIClientWithAlamo {
     private init() {}
     static let manager = VenueSearchAPIClientWithAlamo()
     
-    func getSearchResults(from urlStr: String, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: (Error) -> Void) {
+    func getSearchResults(from venueEndpoint: VenueEndpoint, completionHandler: @escaping (VenueSearchResults) -> Void, errorHandler: @escaping (Error) -> Void) {
         
-        Alamofire.request(urlStr).validate().responseJSON { (response) in
+        var endpoint = String()
+        
+        if let userLocation = venueEndpoint.userLocation, venueEndpoint.locationName == nil {
+            endpoint = searchEndpointWithUserLocation(userLocation)
+        } else {
+            guard let locationName = venueEndpoint.locationName, let query = venueEndpoint.query else { return }
+            endpoint = searchEndpointWithNear(near: locationName, query: query)
+        }
+        
+        
+        Alamofire.request(endpoint).responseJSON { (response) in
+            guard let data = response.data else { return }
             switch response.result {
             case .success:
-                guard let data = response.data else { return }
                 do {
                     let results = try JSONDecoder().decode(VenueSearchResults.self, from: data)
                     completionHandler(results)
@@ -66,35 +38,9 @@ struct VenueSearchAPIClientWithAlamo {
                     print(error)
                 }
             case let .failure(error):
-                guard let error = error as? AFError else { print("Not AFError"); return }
-                switch error {
-                case .invalidURL(let url):
-                    print("Invalid URL: \(url) - \(error.localizedDescription)")
-                case .parameterEncodingFailed(let reason):
-                    print("Parameter encoding failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                case .multipartEncodingFailed(let reason):
-                    print("Multipart encoding failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                case .responseValidationFailed(let reason):
-                    print("Response validation failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                    
-                    switch reason {
-                    case .dataFileNil, .dataFileReadFailed:
-                        print("Downloaded file could not be read")
-                    case .missingContentType(let acceptableContentTypes):
-                        print("Content Type Missing: \(acceptableContentTypes)")
-                    case .unacceptableContentType(let acceptableContentTypes, let responseContentType):
-                        print("Response content type: \(responseContentType) was unacceptable: \(acceptableContentTypes)")
-                    case .unacceptableStatusCode(let code):
-                        print("Response status code was unacceptable: \(code)")
-                    }
-                case .responseSerializationFailed(let reason):
-                    print("Response serialization failed: \(error.localizedDescription)")
-                    print("Failure Reason: \(reason)")
-                }
+                errorHandler(error)
             }
+            
         }
         
         
@@ -104,19 +50,24 @@ struct VenueSearchAPIClientWithAlamo {
         var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
         endpoint?.queryItems = [
             URLQueryItem(name: "near", value: near),
-            URLQueryItem(name: "oauth_token", value: "BAKSUNZT0PTGTTLTWFGGXDGYLGKFBRCPZFU1EA4221TM1DIM"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
             URLQueryItem(name: "v", value: "20180117"), //ENDPOINT USES CURRENT DAYS DATE?
             URLQueryItem(name: "query", value: query)
         ]
         let venueEndpoint = endpoint?.url?.absoluteString
         return venueEndpoint!
     }
+    
+    func searchEndpointWithUserLocation(_ coord: CLLocationCoordinate2D) -> String {
+        var endpoint = URLComponents(string: "https://api.foursquare.com/v2/venues/search")
+        endpoint?.queryItems = [
+            URLQueryItem(name: "ll", value: "\(coord.latitude),\(coord.longitude)"),
+            URLQueryItem(name: "client_id", value: "IB3YSQFSP0OASTWQMKEV3M4WI31INRZQRFXVNFMS45QNZXDM"),
+            URLQueryItem(name: "client_secret", value: "V5ZKW24F55SY0HROQYOXMILCHKXTBGPY0SCCAKEKRHLINPUY"),
+            URLQueryItem(name: "v", value: "20180117") //ENDPOINT USES CURRENT DAYS DATE?
+        ]
+        let venueEndpoint = endpoint?.url?.absoluteString
+        return venueEndpoint!
+    }
 }
-
-
-
-
-
-
-
-
